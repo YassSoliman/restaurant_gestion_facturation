@@ -1,0 +1,3 @@
+* Tout les fichiers d'entree sont placer dans le dossier 'entree'
+* Tout les fichiers de sortie sont placer dans le dossier 'sortie'
+
