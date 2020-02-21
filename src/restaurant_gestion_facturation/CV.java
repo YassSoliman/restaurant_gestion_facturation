@@ -42,5 +42,5 @@ public class CV {
 						+ "\nCompétences : \n" + competencesStr
 						+ "Attentes envers 4B4 : \t\t" + this.attentes + "\n");
 	} 
-
+	
 }
