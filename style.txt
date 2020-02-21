@@ -1,3 +1,5 @@
 * Tout les fichiers d'entree sont placer dans le dossier 'entree'
 * Tout les fichiers de sortie sont placer dans le dossier 'sortie'
-
+* Les classes utilitaires sont placer dans le package 'util'
+* Suivrent les norme d'indentation et nommage de variable, classe et methode appris dans les cours de programmation
+* Laisser des commentaires pour expliquer le fonctionnement de chaquer methode et la signification des variables
