@@ -35,6 +35,6 @@ public class Principale {
 		
 		// TODO : Enlever cette ligne
 		System.out.println(contenuFic);
+		OutilsFichier.fermerFicTexteLecture( fic, nomFicCommandes );
 	}
-
 }

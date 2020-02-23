@@ -7,6 +7,7 @@ public class Client {
 	private String nomClient;
 	private List<Commande> listeCommande;
 	
+	public Client() {}
 	
 	public Client(String nomClient) {
 		this.setNomClient(nomClient);
