@@ -1,5 +1,6 @@
 package restaurant_gestion_facturation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Client {
@@ -7,9 +8,11 @@ public class Client {
 	private String nomClient;
 	private List<Commande> listeCommande;
 	
+	public Client() {}
 	
 	public Client(String nomClient) {
 		this.setNomClient(nomClient);
+		this.listeCommande = new ArrayList<>();
 	}
 
 	public String getNomClient() {
@@ -42,5 +45,20 @@ public class Client {
 	@Override
 	public String toString() {
 		return this.nomClient;
+	}
+	
+	public static Client[] creerClients(String contenu) {
+		List<Client> listeClient = new ArrayList<Client>();
+		
+		String[] lignesContenu = contenu.split("\n");
+		for(String ligne : lignesContenu) {
+			if (ligne.trim().contentEquals("Plats :"))
+				break;
+			if (!ligne.trim().contentEquals("Clients :")) {
+				listeClient.add(new Client(ligne));				
+			}					
+		}
+		
+		return listeClient.toArray(new Client[listeClient.size()]);
 	}
 }

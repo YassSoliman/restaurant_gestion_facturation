@@ -1,7 +1,6 @@
 package restaurant_gestion_facturation;
 
 import java.io.*;
-import java.util.*;
 import outilsjava.OutilsFichier;
 import outilsjava.OutilsLecture;
 
@@ -37,9 +36,9 @@ public class Principale {
 		// TODO : Enlever cette ligne
 		System.out.println(contenuFic);
 		
-		
+		lireClients(contenuFic);
+		OutilsFichier.fermerFicTexteLecture( fic, nomFicCommandes );
 	}
-	
 	
 	//Ecriture du fichier 
 	private BufferedWriter ecrireFichier( String nomFichier, Client[] tabClient ) {
@@ -64,5 +63,16 @@ public class Principale {
 		}
 		
 		return ficEcriture;
+	}
+	
+	private static Client[] lireClients(String contenu) {
+		Client[] tabClients = new Client[0];
+		
+		tabClients = Client.creerClients(contenu);
+		
+		System.out.println(tabClients[0]);
+		
+		return tabClients;
+		
 	}
 }

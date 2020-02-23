@@ -1,5 +1,8 @@
 package restaurant_gestion_facturation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Plat {
 	private String nomPlat;
 	
@@ -30,5 +33,24 @@ public class Plat {
 	@Override
 	public String toString() {
 		return this.nomPlat + " " + this.prixPlat;
+	}
+	
+	public static Plat[] creerPlat(String contenu) {
+		List<Plat> listePlat = new ArrayList<Plat>();
+		
+		String[] lignesContenu = contenu.split("\n");
+		
+		int indice = 0;
+		
+		for(String ligne : lignesContenu) {
+			if (ligne.trim().contentEquals("Commandes :"))
+				break;
+			if (!ligne.trim().contentEquals("Plats :")) {
+				String[] tabPrix = ligne.split(" ");
+				listePlat.add(new Plat(ligne, Double.parseDouble(tabPrix[indice++])));				
+			}					
+		}
+		
+		return listePlat.toArray(new Plat[listePlat.size()]);
 	}
 }
