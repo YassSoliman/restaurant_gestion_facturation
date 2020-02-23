@@ -1,6 +1,8 @@
 package restaurant_gestion_facturation;
 
 import java.io.*;
+
+import outilsjava.OutilsAffichage;
 import outilsjava.OutilsFichier;
 import outilsjava.OutilsLecture;
 
@@ -33,7 +35,7 @@ public class Principale {
 		
 		if(validerFormat(contenuFic)) {
 			Client[] tabClients = lireClients(contenuFic);
-			creerFacture(tabClients);
+			creerFacture(tabClients, nomFicCommandes);
 			OutilsFichier.fermerFicTexteLecture( fic, nomFicCommandes );
 		} else {
 			System.out.println("Le fichier ne respecte pas le format demandé !");
@@ -43,7 +45,7 @@ public class Principale {
 	}
 	
 	//Ecriture du fichier 
-	private static void ecrireFichier( String nomFichier, Client[] tabClient ) {
+	private static void ecrireFichier( String nomFichier, Client[] tabClient, String contenuFacture ) {
 
 		BufferedWriter ficEcriture = null;
 
@@ -51,13 +53,9 @@ public class Principale {
 
 		if ( ficEcriture != null ) {
 			try {
-				ficEcriture.write("\nBienvenue chez Barette!\nFactures:");;
-				
-				for (int i = 0; i < tabClient.length; i++) {
-					ficEcriture.write(tabClient[i].getNomClient() + " " + tabClient[i].calculerFacture() + "$\n");
-				}
-			} catch (Exception e) {
-				
+				ficEcriture.write(contenuFacture);
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 
 			OutilsFichier.fermerFicTexteEcriture( ficEcriture, nomFichier );
@@ -76,9 +74,18 @@ public class Principale {
 		return tabClients;
 	}
 	
-	private static void creerFacture(Client[] tabClients) {
-		//System.out.println("\nBienvenue chez Barette!\nFactures:");
-		ecrireFichier("factureTestSortie.txt", tabClients);
+	private static void creerFacture(Client[] tabClients, String nomFic) {
+		String message = "Bienvenue chez Barette!\nFactures:";
+		
+		for (Client cli : tabClients) {
+			message += cli.getNomClient() + " " + OutilsAffichage.formaterMonetaire(cli.calculerFacture(), 2) + "\n";
+		}
+		
+		System.out.print("\n" + message);
+		
+		String[] nomFicSplit = nomFic.split("\\.");
+		
+		ecrireFichier(nomFicSplit[0] + "Sortie.txt", tabClients, message);
 	}
 	
 	private static boolean validerFormat(String contenu) {
