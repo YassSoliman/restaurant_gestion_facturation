@@ -1,4 +1,3 @@
-* Tout les fichiers d'entree sont placer dans le dossier 'entree'
-* Tout les fichiers de sortie sont placer dans le dossier 'sortie'
-* Les classes utilitaires sont placer dans le package 'util'
+* Tout les fichiers d'entree/sortie sont placer dans le dossier parent du projet
+* Les classes utilitaires sont placer dans le package 'outilsjava'
 * Suivrent les norme d'indentation et nommage de variable, classe et methode appris dans les cours de programmation
