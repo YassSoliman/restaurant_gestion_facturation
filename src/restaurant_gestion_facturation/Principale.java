@@ -1,6 +1,7 @@
 package restaurant_gestion_facturation;
 
 import java.io.*;
+import java.util.*;
 import outilsjava.OutilsFichier;
 import outilsjava.OutilsLecture;
 
@@ -10,6 +11,8 @@ public class Principale {
 
 		String nomFicCommandes;
 		String contenuFic = "";
+		
+		String plats = "";
 		
 		// Assume lire les données du clavier.
 
@@ -33,6 +36,8 @@ public class Principale {
 		
 		// TODO : Enlever cette ligne
 		System.out.println(contenuFic);
+		
+		
 	}
 	
 	
