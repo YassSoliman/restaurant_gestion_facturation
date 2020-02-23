@@ -73,7 +73,7 @@ public class Principale {
 	}
 	
 	private static void creerFacture(Client[] tabClients, String nomFic) {
-		String message = "Bienvenue chez Barette!\nFactures:";
+		String message = "Bienvenue chez Barette!\nFactures:\n";
 		
 		for (Client cli : tabClients) {
 			message += cli.getNomClient() + " " + cli.calculerFacture() + "$\n";
