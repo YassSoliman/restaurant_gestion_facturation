@@ -17,7 +17,7 @@ public class CV {
 		this.competences = competences;
 		this.attentes = attentes;
 	}
-	/*
+	
 	public static void main(String[] args) {
 		System.out.println("Bienvenue chez Barette!\n");
 		
@@ -27,7 +27,7 @@ public class CV {
 		cvYasser.affiche();
 		cvAnass.affiche();
 	}
-	*/
+	
 	
 	public void affiche() {
 		String competencesStr = "";
