@@ -54,11 +54,11 @@ public class Commande {
 			if (!ligne.trim().contentEquals("Commandes :")) {
 				String[] ligneCommande = ligne.split(" ");
 				int indexClient = Client.obtenirClient(ligneCommande[0], tabClients);
-				// int indexPlat = Plat.obtenirPlat(ligneCommande[1], tabPlats);
+				int indexPlat = Plat.obtenirPlat(ligneCommande[1], tabPlats);
 				
-				// Commande commande = new Commande(tabClients[indexClient], tabPlats[indexPlat], Integer.parseInt(ligneCommande[2]));
-				// tabClients[indexClient].getListeCommande().add(commande);
-				// listeCommande.add(commande);				
+				Commande commande = new Commande(tabClients[indexClient], tabPlats[indexPlat], Integer.parseInt(ligneCommande[2]));
+				tabClients[indexClient].getListeCommande().add(commande);
+				listeCommande.add(commande);				
 			}					
 		}
 		
