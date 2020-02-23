@@ -70,13 +70,12 @@ public class Principale {
 		Plat[] tabPlats = new Plat[0];
 		Commande[] tabCommande = new Commande[0];
 		
-		tabClients = Client.creerClients(contenu);
+		//tabClients = Client.creerClients(contenu);
+		tabPlats = Plat.creerPlat(tabClients, contenu);
+		//tabCommande = Commande.creerCommandes(tabClients, tabPlats, contenu);
 		
-		//tabCommande = Commande.creerCommandes();
-		
-		System.out.println(tabClients[0]);
+		System.out.println(tabPlats[0]);
 		
 		return tabClients;
-		
 	}
 }
