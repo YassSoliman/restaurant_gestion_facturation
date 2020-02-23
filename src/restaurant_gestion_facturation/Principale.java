@@ -63,8 +63,12 @@ public class Principale {
 	
 	private static Client[] lireClients(String contenu) {
 		Client[] tabClients = new Client[0];
+		Plat[] tabPlats = new Plat[0];
+		Commande[] tabCommande = new Commande[0];
 		
 		tabClients = Client.creerClients(contenu);
+		
+		//tabCommande = Commande.creerCommandes();
 		
 		System.out.println(tabClients[0]);
 		

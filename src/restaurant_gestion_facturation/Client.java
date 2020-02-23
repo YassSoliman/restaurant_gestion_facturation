@@ -61,4 +61,17 @@ public class Client {
 		
 		return listeClient.toArray(new Client[listeClient.size()]);
 	}
+	
+	public static int obtenirClient(String nom, Client[] tabClient) {
+		int index = -1;
+		
+		for(int i = 0; i < tabClient.length; i++) {
+			if(tabClient[i].getNomClient() == nom) {
+				index = i;
+				break;
+			}			
+		}
+		
+		return index;		
+	}
 }
