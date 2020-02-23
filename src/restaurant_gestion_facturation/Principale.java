@@ -33,9 +33,15 @@ public class Principale {
 			e.printStackTrace();
 		}
 		
-		Client[] tabClients = lireClients(contenuFic);
-		creerFacture(tabClients);
-		OutilsFichier.fermerFicTexteLecture( fic, nomFicCommandes );
+		if(validerFormat(contenuFic)) {
+			Client[] tabClients = lireClients(contenuFic);
+			creerFacture(tabClients);
+			OutilsFichier.fermerFicTexteLecture( fic, nomFicCommandes );
+		} else {
+			System.out.println("Le fichier ne respecte pas le format demandé !");
+		}
+		
+		
 	}
 	
 	//Ecriture du fichier 
@@ -82,5 +88,50 @@ public class Principale {
 		for(Client cli : tabClients) {
             System.out.print(cli.getNomClient() + " " + cli.calculerFacture() + "$\n");
         }		
+	}
+	
+	private static boolean validerFormat(String contenu) {
+		boolean valide = true;
+		boolean clientsValide = false;
+		boolean platsValide = false;
+		boolean commandesValide = false;
+		String[] contenuLigne = contenu.split("\n");
+		if(!contenuLigne[0].trim().equals("Clients :") || !contenuLigne[contenuLigne.length - 1].trim().equals("Fin")) {			
+			valide = false;
+		}
+		if (valide) { 
+			for(int i = 1; i < contenuLigne.length; i++) {
+				if (contenuLigne[i].trim().contentEquals("Plats :")) {
+					clientsValide = true;
+					continue;
+				}
+				if (contenuLigne[i].trim().contentEquals("Commandes :")) {
+					platsValide = true;
+					continue;
+				}
+				if (contenuLigne[i].trim().contentEquals("Fin")) {
+					commandesValide = true;
+					break;
+				}
+				
+				String[] tabLigne = contenuLigne[i].split(" ");
+				
+				if (tabLigne.length != 1 && !clientsValide) {
+					clientsValide = false;
+					break;
+				}
+				if (tabLigne.length != 2 && !platsValide && clientsValide) {
+					platsValide = false;
+					break;
+				}
+				if (tabLigne.length != 3 && !commandesValide && platsValide) {
+					commandesValide = false;
+					break;
+				}								
+			}
+			valide = clientsValide && platsValide && commandesValide;
+		}
+		
+		return valide;
 	}
 }
