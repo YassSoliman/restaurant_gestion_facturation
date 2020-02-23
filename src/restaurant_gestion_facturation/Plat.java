@@ -35,10 +35,11 @@ public class Plat {
 		return this.nomPlat + " " + this.prixPlat;
 	}
 	
-	public static Plat[] creerPlat(Client[] tabClients, Plat[] tabPlats, String contenu) {
+	public static Plat[] creerPlat(Client[] tabClients, String contenu) {
 		List<Plat> listePlat = new ArrayList<Plat>();
 		
 		String[] lignesContenu = contenu.split("\n");
+		
 		
 		for(int i = tabClients.length; i < lignesContenu.length; i++) {
 			String ligne = lignesContenu[i];
@@ -47,8 +48,7 @@ public class Plat {
 				break;
 			if (!ligne.trim().contentEquals("Plats :")) {
 				String[] tabInfoPlat = ligne.split(" ");
-				int indice = obtenirPlat(tabInfoPlat[0], tabPlats);
-				listePlat.add(new Plat(ligne, Double.parseDouble(tabInfoPlat[indice])));				
+				listePlat.add(new Plat(tabInfoPlat[0], Double.parseDouble(tabInfoPlat[1])));				
 			}					
 		}
 		
