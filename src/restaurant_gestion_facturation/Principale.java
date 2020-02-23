@@ -71,7 +71,7 @@ public class Principale {
 	}
 	
 	private static void creerFacture(Client[] tabClients) {
-		System.out.println("\nBienvenue chez Barette!\nFactures:");
-		//ecrireFichier("factureTestSortie.txt", tabClients);
+		//System.out.println("\nBienvenue chez Barette!\nFactures:");
+		ecrireFichier("factureTestSortie.txt", tabClients);
 	}
 }
