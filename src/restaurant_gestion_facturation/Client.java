@@ -42,6 +42,12 @@ public class Client {
 		return prixFacture;
 	}
 	
+	public void afficherCommandes() {
+		for(Commande com : listeCommande) {
+			System.out.println(com);
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return this.nomClient;
@@ -66,7 +72,7 @@ public class Client {
 		int index = -1;
 		
 		for(int i = 0; i < tabClient.length; i++) {
-			if(tabClient[i].getNomClient() == nom) {
+			if(tabClient[i].getNomClient().equals(nom)) {
 				index = i;
 				break;
 			}			

@@ -11,8 +11,6 @@ public class Principale {
 		String nomFicCommandes;
 		String contenuFic = "";
 		
-		String plats = "";
-		
 		// Assume lire les données du clavier.
 
 		BufferedReader fic = new BufferedReader( new InputStreamReader( System.in ) );
@@ -33,24 +31,21 @@ public class Principale {
 			e.printStackTrace();
 		}
 		
-		// TODO : Enlever cette ligne
-		System.out.println(contenuFic);
-		
-		lireClients(contenuFic);
+		Client[] tabClients = lireClients(contenuFic);
+		creerFacture(tabClients);
 		OutilsFichier.fermerFicTexteLecture( fic, nomFicCommandes );
 	}
 	
 	//Ecriture du fichier 
-	private BufferedWriter ecrireFichier( String nomFichier, Client[] tabClient ) {
+	private static void ecrireFichier( String nomFichier, Client[] tabClient ) {
 
 		BufferedWriter ficEcriture = null;
 
 		ficEcriture = OutilsFichier.ouvrirFicTexteEcriture(nomFichier);
 
 		if ( ficEcriture != null ) {
-			
 			try {
-				System.out.println("Bienvenue chez Barette!\nFactures:\n");
+				ficEcriture.write("\nBienvenue chez Barette!\nFactures:");;
 				
 				for (int i = 0; i < tabClient.length; i++) {
 					ficEcriture.write(tabClient[i].getNomClient() + " " + tabClient[i].calculerFacture() + "$\n");
@@ -61,8 +56,6 @@ public class Principale {
 
 			OutilsFichier.fermerFicTexteEcriture( ficEcriture, nomFichier );
 		}
-		
-		return ficEcriture;
 	}
 	
 	private static Client[] lireClients(String contenu) {
@@ -70,12 +63,15 @@ public class Principale {
 		Plat[] tabPlats = new Plat[0];
 		Commande[] tabCommande = new Commande[0];
 		
-		//tabClients = Client.creerClients(contenu);
+		tabClients = Client.creerClients(contenu);
 		tabPlats = Plat.creerPlat(tabClients, contenu);
-		//tabCommande = Commande.creerCommandes(tabClients, tabPlats, contenu);
-		
-		System.out.println(tabPlats[0]);
+		tabCommande = Commande.creerCommandes(tabClients, tabPlats, contenu);
 		
 		return tabClients;
+	}
+	
+	private static void creerFacture(Client[] tabClients) {
+		System.out.println("\nBienvenue chez Barette!\nFactures:");
+		//ecrireFichier("factureTestSortie.txt", tabClients);
 	}
 }

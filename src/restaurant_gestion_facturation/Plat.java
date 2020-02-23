@@ -41,14 +41,17 @@ public class Plat {
 		String[] lignesContenu = contenu.split("\n");
 		
 		
-		for(int i = tabClients.length; i < lignesContenu.length; i++) {
+		for(int i = tabClients.length + 1; i < lignesContenu.length; i++) {
 			String ligne = lignesContenu[i];
 			
 			if (ligne.trim().contentEquals("Commandes :"))
 				break;
 			if (!ligne.trim().contentEquals("Plats :")) {
 				String[] tabInfoPlat = ligne.split(" ");
-				listePlat.add(new Plat(tabInfoPlat[0], Double.parseDouble(tabInfoPlat[1])));				
+				if (tabInfoPlat.length == 2) {
+					listePlat.add(new Plat(tabInfoPlat[0], Double.parseDouble(tabInfoPlat[1])));	
+				}
+						
 			}					
 		}
 		
@@ -59,7 +62,7 @@ public class Plat {
 		int index = -1;
 		
 		for(int i = 0; i < tabPlat.length; i++) {
-			if(tabPlat[i].getNomPlat() == plat) {
+			if(tabPlat[i].getNomPlat().equals(plat)) {
 				index = i;
 				break;
 			}			
