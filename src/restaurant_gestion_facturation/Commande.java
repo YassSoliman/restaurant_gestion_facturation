@@ -53,6 +53,7 @@ public class Commande {
 				break;
 			if (!ligne.trim().contentEquals("Commandes :")) {
 				String[] ligneCommande = ligne.split(" ");
+				
 				if(ligneCommande.length == 3) {					
 					int indexClient = Client.obtenirClient(ligneCommande[0], tabClients);
 					int indexPlat = Plat.obtenirPlat(ligneCommande[1], tabPlats);					
@@ -61,7 +62,6 @@ public class Commande {
 					tabClients[indexClient].getListeCommande().add(commande);
 					listeCommande.add(commande);		
 				}
-			
 			}					
 		}
 		

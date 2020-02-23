@@ -11,8 +11,6 @@ public class Principale {
 		String nomFicCommandes;
 		String contenuFic = "";
 		
-		String plats = "";
-		
 		// Assume lire les données du clavier.
 
 		BufferedReader fic = new BufferedReader( new InputStreamReader( System.in ) );
@@ -45,16 +43,15 @@ public class Principale {
 	}
 	
 	//Ecriture du fichier 
-	private BufferedWriter ecrireFichier( String nomFichier, Client[] tabClient ) {
+	private static void ecrireFichier( String nomFichier, Client[] tabClient ) {
 
 		BufferedWriter ficEcriture = null;
 
 		ficEcriture = OutilsFichier.ouvrirFicTexteEcriture(nomFichier);
 
 		if ( ficEcriture != null ) {
-			
 			try {
-				System.out.println("Bienvenue chez Barette!\nFactures:\n");
+				ficEcriture.write("\nBienvenue chez Barette!\nFactures:");;
 				
 				for (int i = 0; i < tabClient.length; i++) {
 					ficEcriture.write(tabClient[i].getNomClient() + " " + tabClient[i].calculerFacture() + "$\n");
@@ -65,8 +62,6 @@ public class Principale {
 
 			OutilsFichier.fermerFicTexteEcriture( ficEcriture, nomFichier );
 		}
-		
-		return ficEcriture;
 	}
 	
 	private static Client[] lireClients(String contenu) {
@@ -76,18 +71,14 @@ public class Principale {
 		
 		tabClients = Client.creerClients(contenu);
 		tabPlats = Plat.creerPlat(tabClients, contenu);
-		tabCommande = Commande.creerCommandes(tabClients, tabPlats, contenu);		
+		tabCommande = Commande.creerCommandes(tabClients, tabPlats, contenu);
 		
 		return tabClients;
-		
 	}
 	
 	private static void creerFacture(Client[] tabClients) {
 		System.out.println("\nBienvenue chez Barette!\nFactures:");
-		
-		for(Client cli : tabClients) {
-            System.out.print(cli.getNomClient() + " " + cli.calculerFacture() + "$\n");
-        }		
+		//ecrireFichier("factureTestSortie.txt", tabClients);
 	}
 	
 	private static boolean validerFormat(String contenu) {
