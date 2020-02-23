@@ -33,10 +33,8 @@ public class Principale {
 			e.printStackTrace();
 		}
 		
-		// TODO : Enlever cette ligne
-		System.out.println(contenuFic);
-		
-		lireClients(contenuFic);
+		Client[] tabClients = lireClients(contenuFic);
+		creerFacture(tabClients);
 		OutilsFichier.fermerFicTexteLecture( fic, nomFicCommandes );
 	}
 	
@@ -71,12 +69,18 @@ public class Principale {
 		Commande[] tabCommande = new Commande[0];
 		
 		tabClients = Client.creerClients(contenu);
-		
-		//tabCommande = Commande.creerCommandes();
-		
-		System.out.println(tabClients[0]);
+		tabPlats = Plat.creerPlat(tabClients, contenu);
+		tabCommande = Commande.creerCommandes(tabClients, tabPlats, contenu);		
 		
 		return tabClients;
 		
+	}
+	
+	private static void creerFacture(Client[] tabClients) {
+		System.out.println("\nBienvenue chez Barette!\nFactures:");
+		
+		for(Client cli : tabClients) {
+            System.out.print(cli.getNomClient() + " " + cli.calculerFacture() + "$\n");
+        }		
 	}
 }

@@ -45,20 +45,23 @@ public class Commande {
 
 	public static Commande[] creerCommandes(Client[] tabClients, Plat[] tabPlats, String contenu) {
 		List<Commande> listeCommande = new ArrayList<Commande>();
-
 		String[] lignesContenu = contenu.split("\n");
+		
 		for(int i = tabClients.length + tabPlats.length + 2; i < lignesContenu.length; i++) {
 			String ligne = lignesContenu[i];
 			if (ligne.trim().contentEquals("Fin"))
 				break;
 			if (!ligne.trim().contentEquals("Commandes :")) {
 				String[] ligneCommande = ligne.split(" ");
-				int indexClient = Client.obtenirClient(ligneCommande[0], tabClients);
-				// int indexPlat = Plat.obtenirPlat(ligneCommande[1], tabPlats);
-				
-				// Commande commande = new Commande(tabClients[indexClient], tabPlats[indexPlat], Integer.parseInt(ligneCommande[2]));
-				// tabClients[indexClient].getListeCommande().add(commande);
-				// listeCommande.add(commande);				
+				if(ligneCommande.length == 3) {					
+					int indexClient = Client.obtenirClient(ligneCommande[0], tabClients);
+					int indexPlat = Plat.obtenirPlat(ligneCommande[1], tabPlats);					
+					
+					Commande commande = new Commande(tabClients[indexClient], tabPlats[indexPlat], Integer.parseInt(ligneCommande[2]));
+					tabClients[indexClient].getListeCommande().add(commande);
+					listeCommande.add(commande);		
+				}
+			
 			}					
 		}
 		
