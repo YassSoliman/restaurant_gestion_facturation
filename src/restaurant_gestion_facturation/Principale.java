@@ -43,7 +43,7 @@ public class Principale {
 	}
 	
 	//Ecriture du fichier 
-	private static void ecrireFichier( String nomFichier, Client[] tabClient, String contenuFacture ) {
+	private static void ecrireFichier( String nomFichier, String contenuFacture ) {
 
 		BufferedWriter ficEcriture = null;
 
@@ -83,7 +83,7 @@ public class Principale {
 		
 		String[] nomFicSplit = nomFic.split("\\.");
 		
-		ecrireFichier(nomFicSplit[0] + "Sortie.txt", tabClients, message);
+		ecrireFichier(nomFicSplit[0] + "Sortie.txt", message);
 	}
 	
 	private static boolean validerFormat(String contenu) {
