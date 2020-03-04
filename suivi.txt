@@ -1,0 +1,18 @@
+Tâches Yasser :
+	* Il peut y avoir des commandes incorrectes. Une commande est incorrecte si :
+		* Le nom du client ou le plat n’existe pas (vu précédemment).
+		* Des chiffres sont erronés (quantité de plats commandés).
+		
+	* En sortie, on souhaite avoir une facture affichée à l’écran (terminal) et éditée dans le
+	fichier (Facture-du-date-heure.txt).
+	
+	* Dans ces sorties (Terminal, Facture-du-date-heure.txt), vous devez afficher toutes les
+	commandes incorrectes (les détails de la commande et la raison de l’erreur) avant les
+	factures. L’ergonomie de l’affichage est laissée à votre discrétion.
+
+Tâches Anass :
+	* Si un client a une facture de 0$, sa facture n’est pas affichée dans le fichier de sortie.
+	
+	* Les taxes sont maintenant appliquées (à raison de TPS 5% et TVQ 9,975%).
+	
+	* Le calcul de la facture doit se faire par client.
