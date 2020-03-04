@@ -1,0 +1,54 @@
+Tâche 1 - Valider les commandes
+1 - Il peut y avoir des commandes incorrectes. Une commande est incorrecte si :
+	a - Le nom du client ou le plat n’existe pas (vu précédemment).
+	b - Des chiffres sont erronés (quantité de plats commandés).
+
+1-a : 	À partir de la lecture du fichier d'entrée on a une liste de clients et
+		de plats. Avec ceux-ci on peut crée des tableaux contenant les clients
+		et les plats existants pour valider les commandes. On passe chaque commande
+		dans une méthode validerCommande(commande) qui par la suite validerClient(client) 
+		et validerPlat(plat). Si les deux indique valide on passe à la création de la
+		commande sinon on retourne un message d'erreur selon lequel est invalide.
+
+1-b :	À partir de la lecture du fichier d'entrée on peut obtenir les commandes.
+		On procède à valider les commandes avec validerCommande(commande). Cette
+		méthode appèle une autre méthode validerQuantite(quantite) qui vérifie
+		si la quantité est un chiffre entier positif plus grand que 0.
+
+validerCommande(commande) : prend un objet de type Commande en paramètre. Appèle les méthodes
+							validerPlat(plat), validerClient(client) et validerQuantite(quantite).
+							Si une de ces méthode retourne invalide, affiche le message suivant :
+							"Commande : <commande> 
+							 Détails : <message(s) d'erreur des méthodes>"
+
+validerPlat(plat) 		  : prend un objet de type Plat en paramètre. Vérifie que la plat existe
+							dans la liste de plat dans le fichier d'entrée. Si invalide retourne 
+							le message d'erreur : "Le plat <nom du plat> n'existe pas."
+
+validerClient(client)	  : prend un objet de type Client en paramètre. Vérifie que le client
+							existe dans la liste de client dans le fichier d'entrée. Si invalide
+							retourne le message d'erreur : "Le client <nom du client> n'existe pas."
+
+validerQuantite(quantite) : prend un objet de type String qui signifie la quantité de plat commandé
+							et vérifie s'il consiste d'un chiffre entier positif plus grand que 0.
+							Si invalide retourne le message d'erreur : "La quantité de plat commandé 
+							est invalide."
+
+Tâche 2 - Afficher une facture
+
+2 - En sortie, on souhaite avoir une facture affichée à l’écran (terminal) et éditée dans le
+fichier (Facture-du-date-heure.txt).
+
+La fonctionalité pour affichée à l'écran et éditée dans un fichier existe.
+Il faut juste changer la nomenclature du fichier sortie à Facture-du-date-heure.txt
+
+Tâche 3 - Afficher les commandes incorrectes
+
+3 - Dans ces sorties (Terminal, Facture-du-date-heure.txt), vous devez afficher toutes les
+commandes incorrectes (les détails de la commande et la raison de l’erreur) avant les
+factures. L’ergonomie de l’affichage est laissée à votre discrétion.
+
+Une fois les commandes valider avec validerCommande(commande) on obtient automatiquement
+les commandes invalides et leurs détails. Avec cela on peut afficher le message reçu par
+validerCommande(commande) avant de afficher la facture. 
+
