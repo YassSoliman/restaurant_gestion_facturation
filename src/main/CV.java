@@ -1,4 +1,4 @@
-package restaurant_gestion_facturation;
+package main;
 
 public class CV {
 	
