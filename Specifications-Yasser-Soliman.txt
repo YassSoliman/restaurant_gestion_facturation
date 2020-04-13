@@ -42,13 +42,3 @@ fichier (Facture-du-date-heure.txt).
 La fonctionalité pour affichée à l'écran et éditée dans un fichier existe.
 Il faut juste changer la nomenclature du fichier sortie à Facture-du-date-heure.txt
 
-Tâche 3 - Afficher les commandes incorrectes
-
-3 - Dans ces sorties (Terminal, Facture-du-date-heure.txt), vous devez afficher toutes les
-commandes incorrectes (les détails de la commande et la raison de l’erreur) avant les
-factures. L’ergonomie de l’affichage est laissée à votre discrétion.
-
-Une fois les commandes valider avec validerCommande(commande) on obtient automatiquement
-les commandes invalides et leurs détails. Avec cela on peut afficher le message reçu par
-validerCommande(commande) avant de afficher la facture. 
-

@@ -1,8 +1,4 @@
-Si un client a une facture de 0$, sa facture n’est pas affichée dans le fichier de sortie.
-	Implementer une verification de la valeur de la methode calculerFacture() de la classe Client à l'aide d'une condition if(cli.calculerFacture() > 0)
-	dans la methode creerFacture(), avant d'écrire la commande dans le fichier de sortie. 
-	
-2. Les taxes sont maintenant appliquées (à raison de TPS 5% et TVQ 9,975%).
+1. Les taxes sont maintenant appliquées (à raison de TPS 5% et TVQ 9,975%).
 	- Créer des nouvelles constantes de type réel dans le fichier utilitaire OutilsConstantes.java pour le TPS qui sera équivalent a 1.05 et pour le TVQ
 	  qui sera équivalent à 1.09975.
 	   
@@ -10,5 +6,5 @@ Si un client a une facture de 0$, sa facture n’est pas affichée dans le fichi
  	  de la classe Client. 
 
 
-3. Le calcul de la facture doit se faire par client.
+2. Le calcul de la facture doit se faire par client.
 	Le calcul de la facture se fait deja par client individuel. Il faut seulement implementer les modifications de calcul et d'impression de facture.

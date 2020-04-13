@@ -1,0 +1,13 @@
+1 - Si un client a une facture de 0$, sa facture n’est pas affichée dans le fichier de sortie.
+	Implementer une verification de la valeur de la methode calculerFacture() de la classe Client à l'aide d'une condition if(cli.calculerFacture() > 0)
+	dans la methode creerFacture(), avant d'écrire la commande dans le fichier de sortie. 
+	
+2 - Afficher les commandes incorrectes
+
+Dans ces sorties (Terminal, Facture-du-date-heure.txt), vous devez afficher toutes les
+commandes incorrectes (les détails de la commande et la raison de l’erreur) avant les
+factures. L’ergonomie de l’affichage est laissée à votre discrétion.
+
+Une fois les commandes valider avec validerCommande(commande) on obtient automatiquement
+les commandes invalides et leurs détails. Avec cela on peut afficher le message reçu par
+validerCommande(commande) avant de afficher la facture. 
