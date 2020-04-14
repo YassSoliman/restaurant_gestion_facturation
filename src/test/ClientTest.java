@@ -22,4 +22,15 @@ public class ClientTest {
 		assertEquals(prixValidation, client.calculerFacture(), 0.01);
 	}
 
+	@Test
+	public void testValiderQuantite() {
+		Client client = new Client("Client A");
+		Plat plat = new Plat("Plat A", 19.99);
+		Commande commande = new Commande(client, plat, 0);
+		client.ajouterCommande(commande);
+		
+		String quantite = Integer.toString(commande.getQteCommande());
+		
+		assertEquals("La quantité de plat commandé est invalide.", client.validerQuantite(quantite), 0.01);
+	}	
 }
