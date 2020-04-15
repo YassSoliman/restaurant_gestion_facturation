@@ -41,6 +41,7 @@ public class Client {
 	
 	public void ajouterCommande(Commande commande) {
 		listeCommande.add(commande);
+		this.getFacture().calculerFacture();
 	}
 	
 	public List<Commande> getListeCommande() {

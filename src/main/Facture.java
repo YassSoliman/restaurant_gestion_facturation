@@ -48,7 +48,7 @@ public class Facture {
 		String message = "Bienvenue chez Barette!\nFactures:\n";
 		
 		for (Client cli : Client.getListeClients()) {
-			cli.getFacture().calculerFacture();
+			//cli.getFacture().calculerFacture();
 			message += cli.getFacture();
 		}
 		
