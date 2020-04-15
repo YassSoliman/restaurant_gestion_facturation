@@ -19,6 +19,6 @@ public class ClientTest {
 		
 		double prixValidation = (commande.getPlatCommander().getPrixPlat() * commande.getQteCommande()) * (1.09975 + 0.05);
 	
-		assertEquals(prixValidation, client.calculerFacture(), 0.01);
+		assertEquals(prixValidation, client.getFacture().getPrix(), 0.01);
 	}
 }
