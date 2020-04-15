@@ -19,6 +19,18 @@ public class PrincipaleTest {
 		
 		String quantite = Integer.toString(commande.getQteCommande());
 		
-		assertEquals("La quantité de plat commandé est invalide.", client.validerQuantite(quantite));
-	}	
+		assertEquals("La quantitÃ© de plat commandÃ© est invalide.", client.validerQuantite(quantite));
+	}
+	
+	@Test
+	public void testValiderClient() {
+		Client client = null;
+		Plat plat = null;
+		Commande commande = null;
+		client.ajouterCommande(commande);
+			
+		String chaineValidation = "Le client " + client.getNomClient() + " n'existe pas.";
+		
+		assertEquals(chaineValidation, client.validerClient(client));
+	}
 }
