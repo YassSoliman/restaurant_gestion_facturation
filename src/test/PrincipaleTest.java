@@ -34,18 +34,6 @@ public class PrincipaleTest {
 	}
 	
 	@Test
-	public void testValiderPlat() {
-		Client client = null;
-		Plat plat = null;
-		Commande commande = null;
-		client.ajouterCommande(commande);
-			
-		String chaineValidation = "Le plat " + plat.getNomPlat() + " n'existe pas.";
-		
-		assertEquals(chaineValidation, Client.validerPlat(plat));
-	}
-	
-	@Test
 	public void testValiderCommande() {
 		Client client = new Client();
 		Plat plat = null;
