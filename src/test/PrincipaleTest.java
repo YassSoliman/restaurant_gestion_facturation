@@ -9,40 +9,55 @@ import main.Commande;
 import main.Plat;
 
 public class PrincipaleTest {
+
+	@Test
+	public void testValiderQuantite() {
+		Client client = new Client("Client A");
+		Plat plat = new Plat("Plat A", 19.99);
+		int quantite = 0;
+		Commande commande = new Commande(client, plat, quantite);
+		client.ajouterCommande(commande);
+				
+		assertEquals("La quantité de plat commandé est invalide.", Commande.validerQuantite(quantite));
+	}
 	
-//	@Test
-//	public void testValiderQuantite() {
-//		Client client = new Client("Client A");
-//		Plat plat = new Plat("Plat A", 19.99);
-//		Commande commande = new Commande(client, plat, 0);
-//		client.ajouterCommande(commande);
-//		
-//		String quantite = Integer.toString(commande.getQteCommande());
-//		
-//		assertEquals("La quantité de plat commandé est invalide.", client.validerQuantite(quantite));
-//	}
-//	
-//	@Test
-//	public void testValiderClient() {
-//		Client client = null;
-//		Plat plat = null;
-//		Commande commande = null;
-//		client.ajouterCommande(commande);
-//			
-//		String chaineValidation = "Le client " + client.getNomClient() + " n'existe pas.";
-//		
-//		assertEquals(chaineValidation, client.validerClient(client));
-//	}
-//	
-//	@Test
-//	public void testValiderPlat() {
-//		Client client = null;
-//		Plat plat = null;
-//		Commande commande = null;
-//		client.ajouterCommande(commande);
-//			
-//		String chaineValidation = "Le plat " + plat.getNomPlat() + " n'existe pas.";
-//		
-//		assertEquals(chaineValidation, client.validerPlat(plat));
-//	}	
+	@Test
+	public void testValiderClient() {
+		Client client = new Client();
+		Plat plat = null;
+		Commande commande = new Commande(client, plat, 0);
+		client.ajouterCommande(commande);
+			
+		String chaineValidation = "Le client " + client.getNomClient() + " n'existe pas.";
+		
+		assertEquals(chaineValidation, Client.validerClient(client));
+	}
+	
+	@Test
+	public void testValiderPlat() {
+		Client client = null;
+		Plat plat = null;
+		Commande commande = null;
+		client.ajouterCommande(commande);
+			
+		String chaineValidation = "Le plat " + plat.getNomPlat() + " n'existe pas.";
+		
+		assertEquals(chaineValidation, Client.validerPlat(plat));
+	}
+	
+	@Test
+	public void testValiderCommande() {
+		Client client = new Client();
+		Plat plat = null;
+		Commande commande = new Commande(client, plat, 0);
+		client.ajouterCommande(commande);
+		
+		String chaineValidation = "Commande : " + commande.toString() + "\nDétails : \n";
+		
+		chaineValidation += Commande.validerQuantite(commande.getQteCommande()) 
+				+ "\n\t\t" + Client.validerClient(commande.getClient()) 
+				+ "\n\t\t" + Plat.validerPlat(commande.getPlatCommander()); 		
+		
+		assertEquals(chaineValidation, Commande.validerCommande(commande));
+	}	
 }
