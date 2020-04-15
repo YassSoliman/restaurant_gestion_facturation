@@ -44,4 +44,20 @@ public class PrincipaleTest {
 		
 		assertEquals(chaineValidation, Client.validerPlat(plat));
 	}
+	
+	@Test
+	public void testValiderCommande() {
+		Client client = new Client();
+		Plat plat = null;
+		Commande commande = new Commande(client, plat, 0);
+		client.ajouterCommande(commande);
+		
+		String chaineValidation = "Commande : " + commande.toString() + "\nDétails : \n";
+		
+		chaineValidation += Commande.validerQuantite(commande.getQteCommande()) 
+				+ "\n\t\t" + Client.validerClient(commande.getClient()) 
+				+ "\n\t\t" + Plat.validerPlat(commande.getPlatCommander()); 		
+		
+		assertEquals(chaineValidation, Commande.validerCommande(commande));
+	}	
 }
