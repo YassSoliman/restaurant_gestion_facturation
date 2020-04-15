@@ -23,9 +23,9 @@ public class PrincipaleTest {
 	
 	@Test
 	public void testValiderClient() {
-		Client client = new Client("Client A");
+		Client client = new Client();
 		Plat plat = null;
-		Commande commande = new Commande(client, plat, 0);;
+		Commande commande = new Commande(client, plat, 0);
 		client.ajouterCommande(commande);
 			
 		String chaineValidation = "Le client " + client.getNomClient() + " n'existe pas.";
@@ -43,5 +43,21 @@ public class PrincipaleTest {
 		String chaineValidation = "Le plat " + plat.getNomPlat() + " n'existe pas.";
 		
 		assertEquals(chaineValidation, client.validerPlat(plat));
+	}
+	
+	@Test
+	public void testValiderCommande() {
+		Client client = new Client();
+		Plat plat = null;
+		Commande commande = new Commande(client, plat, 0);
+		client.ajouterCommande(commande);
+		
+		String chaineValidation = "Commande : " + commande.toString() + "\nDétails : \n";
+		
+		chaineValidation += Commande.validerQuantite(commande.getQteCommande()) 
+				+ "\n\t\t" + Client.validerClient(commande.getClient()) 
+				+ "\n\t\t" + Plat.validerPlat(commande.getPlatCommander()); 		
+		
+		assertEquals(chaineValidation, Commande.validerCommande(commande));
 	}	
 }
