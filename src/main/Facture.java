@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import outilsjava.OutilsAffichage;
+import outilsjava.OutilsConstantes;
 
 public class Facture {
 	private static List<Facture> listeFactures = new ArrayList<Facture>();
@@ -38,7 +39,7 @@ public class Facture {
 		//TODO ajouter TPS TVQ
 		for (int i = 0; i < client.getListeCommande().size(); i++) {
 			prixFacture += client.getListeCommande().get(i).getPlatCommander().getPrixPlat() * 
-					client.getListeCommande().get(i).getQteCommande();
+					client.getListeCommande().get(i).getQteCommande() * (OutilsConstantes.TPS + OutilsConstantes.TVQ);
 		}
 		
 		setPrix(prixFacture);
@@ -48,7 +49,6 @@ public class Facture {
 		String message = "Bienvenue chez Barette!\nFactures:\n";
 		
 		for (Client cli : Client.getListeClients()) {
-			cli.getFacture().calculerFacture();
 			message += cli.getFacture();
 		}
 		

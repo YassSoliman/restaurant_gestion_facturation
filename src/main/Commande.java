@@ -38,7 +38,7 @@ public class Commande {
 		this.platCommander = platCommander;
 		this.qteCommande = qteCommande;
 		Commande.getListeCommandes().add(this);
-		client.getListeCommande().add(this);
+		client.ajouterCommande(this);
 	}
 	
 	public Client getClient() {
