@@ -8,9 +8,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import outilsjava.OutilsAffichage;
-import outilsjava.OutilsFichier;
-import outilsjava.OutilsLecture;
+import outilsjava.*;
 
 public class Principale {
 
@@ -41,7 +39,13 @@ public class Principale {
 		
 		if(validerFormat(contenuFic)) {
 			lireClients(contenuFic);
-			creerFacture(nomFicCommandes);
+			
+			String message = Facture.creerFacture();
+			
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH'h'mm");
+			Date date = new Date();
+			
+			ecrireFichier("Facture-du-" + dateFormat.format(date) + ".txt", message);
 			OutilsFichier.fermerFicTexteLecture( fic, nomFicCommandes );
 		} else {
 			System.out.println("Le fichier ne respecte pas le format demandé !");
@@ -74,20 +78,7 @@ public class Principale {
 		Commande.creerCommandes(contenu);		
 	}
 	
-	private static void creerFacture(String nomFic) {
-		String message = "Bienvenue chez Barette!\nFactures:\n";
-		
-		for (Client cli : Client.getListeClients()) {
-			message += cli.getNomClient() + " " + OutilsAffichage.formaterMonetaire(cli.getFacture().calculerFacture(), 2) + "\n";
-		}
-		
-		System.out.print("\n" + message);
-				
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH'h'mm");
-		Date date = new Date();
-		
-		ecrireFichier("Facture-du-" + dateFormat.format(date) + ".txt", message);
-	}
+	
 	
 	private static boolean validerFormat(String contenu) {
 		boolean valide = true;

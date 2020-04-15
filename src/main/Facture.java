@@ -3,6 +3,8 @@ package main;
 import java.util.ArrayList;
 import java.util.List;
 
+import outilsjava.OutilsAffichage;
+
 public class Facture {
 	private static List<Facture> listeFactures = new ArrayList<Facture>();
 	private Client client;
@@ -26,10 +28,8 @@ public class Facture {
 	
 	public Facture() {}
 	
-	//remove prix
 	public Facture(Client client) {
 		this.client = client;
-		//add facture to listeFacture
 		Facture.getListeFactures().add(this);
 	}
 
@@ -42,6 +42,19 @@ public class Facture {
 		}
 		
 		setPrix(prixFacture);
+	}
+	
+	public static String creerFacture() {
+		String message = "Bienvenue chez Barette!\nFactures:\n";
+		
+		for (Client cli : Client.getListeClients()) {
+			message += cli.getNomClient() + " " + OutilsAffichage.formaterMonetaire(cli.getFacture().getPrix(), 2) + "\n";
+		}
+		
+		System.out.print("\n" + message);
+			
+		return message;
+		
 	}
 
 	@Override
