@@ -8,3 +8,9 @@
 
 2. Le calcul de la facture doit se faire par client.
 	Le calcul de la facture se fait deja par client individuel. Il faut seulement implementer les modifications de calcul et d'impression de facture.
+	
+	Créer la classe Facture qui contient les méthodes suivantes:
+		public Client getClient()
+		public double calculerFacture()
+		afficherFacture() -> return getClient.getNomClient() + calculerFacture() (return "" si invalid)
+		

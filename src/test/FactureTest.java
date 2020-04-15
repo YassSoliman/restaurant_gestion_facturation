@@ -12,6 +12,6 @@ public class FactureTest {
 	public void testFactureNull() {
 		Client client = new Client("Client");
 			
-		assertEquals("", client.getFacture().afficherFacture());
+		assertEquals("", client.getFacture().toString());
 	}
 }

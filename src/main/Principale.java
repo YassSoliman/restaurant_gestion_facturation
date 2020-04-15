@@ -78,7 +78,7 @@ public class Principale {
 		String message = "Bienvenue chez Barette!\nFactures:\n";
 		
 		for (Client cli : tabClients) {
-			message += cli.getNomClient() + " " + OutilsAffichage.formaterMonetaire(cli.calculerFacture(), 2) + "\n";
+			message += cli.getNomClient() + " " + OutilsAffichage.formaterMonetaire(cli.getFacture().calculerFacture(), 2) + "\n";
 		}
 		
 		System.out.print("\n" + message);
