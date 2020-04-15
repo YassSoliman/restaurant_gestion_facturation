@@ -26,6 +26,7 @@
 #################
 private static List<Commande> listeCommandes
 private static String erreurs;
+Commande.getErreurs()
 Commande.getListeCommandes()
 Commande.setListeCommandes(listeCommandes)
 Commande.validerCommande(commande)
@@ -45,7 +46,6 @@ Commande.validerQuantite(quantite)
 # Plat.java #
 #############
 private static List<Plat> listePlats;
-private static String erreurs;
 Plat.getListePlats()
 Plat.setListePlats(listePlats)
 Plat.validerPlat(plat)
@@ -57,7 +57,6 @@ Plat.validerPlat(plat)
 # Client.java #
 ###############
 private static List<Client> listeClients;
-private static String erreurs;
 Client.getListeClients()
 Client.setListeClients(listeClients)
 Client.validerClient(client)
