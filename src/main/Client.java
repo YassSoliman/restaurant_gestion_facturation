@@ -4,16 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Client {
-
+	private static List<Client> listeClients = new ArrayList<Client>();
+	
 	private String nomClient;
 	private List<Commande> listeCommande;
 	private Facture facture;
 	
+	public static List<Client> getListeClients() {
+		return listeClients;
+	}
+
+	public static void setListeClients(List<Client> listeClients) {
+		Client.listeClients = listeClients;
+	}
+	
+	public static String validerClient(Client client) {
+		return Client.getListeClients().contains(client) ? "" : "Le client " + client.getNomClient() + " n'existe pas.";
+	}
+
 	public Client() {}
 	
 	public Client(String nomClient) {
 		this.setNomClient(nomClient);
 		this.listeCommande = new ArrayList<>();
+		Client.getListeClients().add(this);
 	}
 
 	public String getNomClient() {
@@ -47,26 +61,23 @@ public class Client {
 		return this.nomClient;
 	}
 	
-	public static Client[] creerClients(String contenu) {
-		List<Client> listeClient = new ArrayList<Client>();
-		
+	public static void creerClients(String contenu) {
 		String[] lignesContenu = contenu.split("\n");
 		for(String ligne : lignesContenu) {
 			if (ligne.trim().contentEquals("Plats :"))
 				break;
 			if (!ligne.trim().contentEquals("Clients :")) {
-				listeClient.add(new Client(ligne));				
+				new Client(ligne);				
 			}					
 		}
-		
-		return listeClient.toArray(new Client[listeClient.size()]);
 	}
 	
-	public static int obtenirClient(String nom, Client[] tabClient) {
+	public static int obtenirClient(String nom) {
 		int index = -1;
+		int tailleListeClients = Client.getListeClients().size();
 		
-		for(int i = 0; i < tabClient.length; i++) {
-			if(tabClient[i].getNomClient().equals(nom)) {
+		for(int i = 0; i < tailleListeClients; i++) {
+			if(Client.getListeClients().get(i).getNomClient().equals(nom)) {
 				index = i;
 				break;
 			}			

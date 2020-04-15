@@ -22,7 +22,9 @@ public class Commande {
 	public static String validerCommande(Commande commande) {
 		String messageErreurs = "Commande : " + commande.toString() + "\nDétails : \n";
 		
-		// TODO : messageErreurs += validerQuantite() + "\n" + validerClient() + "\n" + validerPlat(); 
+		messageErreurs += validerQuantite(commande.getQteCommande()) 
+				+ "\n\t\t" + Client.validerClient(commande.getClient()) 
+				+ "\n\t\t" + Plat.validerPlat(commande.getPlatCommander()); 
 		
 		return messageErreurs;
 	}
@@ -35,6 +37,8 @@ public class Commande {
 		this.client = client;
 		this.platCommander = platCommander;
 		this.qteCommande = qteCommande;
+		Commande.getListeCommandes().add(this);
+		client.getListeCommande().add(this);
 	}
 	
 	public Client getClient() {
@@ -66,11 +70,12 @@ public class Commande {
 		return client + " " + platCommander + " " + qteCommande;
 	}
 
-	public static Commande[] creerCommandes(Client[] tabClients, Plat[] tabPlats, String contenu) {
-		List<Commande> listeCommande = new ArrayList<Commande>();
+	public static void creerCommandes(String contenu) {
 		String[] lignesContenu = contenu.split("\n");
+		int tailleListeClients = Client.getListeClients().size();
+		int tailleListePlats = Plat.getListePlats().size();
 		
-		for(int i = tabClients.length + tabPlats.length + 2; i < lignesContenu.length; i++) {
+		for(int i = tailleListeClients + tailleListePlats + 2; i < lignesContenu.length; i++) {
 			String ligne = lignesContenu[i];
 			if (ligne.trim().contentEquals("Fin"))
 				break;
@@ -78,18 +83,14 @@ public class Commande {
 				String[] ligneCommande = ligne.split(" ");
 				
 				if(ligneCommande.length == 3) {					
-					int indexClient = Client.obtenirClient(ligneCommande[0], tabClients);
-					int indexPlat = Plat.obtenirPlat(ligneCommande[1], tabPlats);					
+					int indexClient = Client.obtenirClient(ligneCommande[0]);
+					int indexPlat = Plat.obtenirPlat(ligneCommande[1]);					
 					
-					Commande commande = new Commande(tabClients[indexClient], tabPlats[indexPlat], Integer.parseInt(ligneCommande[2]));
-					tabClients[indexClient].getListeCommande().add(commande);
-					listeCommande.add(commande);		
+					new Commande(Client.getListeClients().get(indexClient), 
+							Plat.getListePlats().get(indexPlat), Integer.parseInt(ligneCommande[2]));
 				}
 			}					
 		}
-		
-		return listeCommande.toArray(new Commande[listeCommande.size()]);
-		
 	}
 	
 }

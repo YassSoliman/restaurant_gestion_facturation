@@ -4,13 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Plat {
+	private static List<Plat> listePlats = new ArrayList<Plat>();
+	
 	private String nomPlat;
 	
 	private double prixPlat;
 	
+	public static List<Plat> getListePlats() {
+		return listePlats;
+	}
+
+	public static void setListePlats(List<Plat> listePlats) {
+		Plat.listePlats = listePlats;
+	}
+	
+	public static String validerPlat(Plat plat) {		
+		return Plat.getListePlats().contains(plat) ? "" : "Le plat " + plat.getNomPlat() + " n'existe pas.";
+	}
+
 	public Plat(String nom, double prix) {
 		this.nomPlat = nom;
 		this.prixPlat = prix;
+		Plat.getListePlats().add(this);
 	}
 	
 	public String getNomPlat() {
@@ -35,13 +50,11 @@ public class Plat {
 		return this.nomPlat + " " + this.prixPlat;
 	}
 	
-	public static Plat[] creerPlat(Client[] tabClients, String contenu) {
-		List<Plat> listePlat = new ArrayList<Plat>();
-		
+	public static void creerPlat(String contenu) {		
 		String[] lignesContenu = contenu.split("\n");
+		int tailleListeClients = Client.getListeClients().size();
 		
-		
-		for(int i = tabClients.length + 1; i < lignesContenu.length; i++) {
+		for(int i = tailleListeClients + 1; i < lignesContenu.length; i++) {
 			String ligne = lignesContenu[i];
 			
 			if (ligne.trim().contentEquals("Commandes :"))
@@ -49,20 +62,19 @@ public class Plat {
 			if (!ligne.trim().contentEquals("Plats :")) {
 				String[] tabInfoPlat = ligne.split(" ");
 				if (tabInfoPlat.length == 2) {
-					listePlat.add(new Plat(tabInfoPlat[0], Double.parseDouble(tabInfoPlat[1])));	
+					new Plat(tabInfoPlat[0], Double.parseDouble(tabInfoPlat[1]));	
 				}
 						
 			}					
 		}
-		
-		return listePlat.toArray(new Plat[listePlat.size()]);
 	}
 	
-	public static int obtenirPlat(String plat, Plat[] tabPlat) {
+	public static int obtenirPlat(String plat) {
 		int index = -1;
+		int tailleListePlats = Plat.getListePlats().size();
 		
-		for(int i = 0; i < tabPlat.length; i++) {
-			if(tabPlat[i].getNomPlat().equals(plat)) {
+		for(int i = 0; i < tailleListePlats; i++) {
+			if(Plat.getListePlats().get(i).getNomPlat().equals(plat)) {
 				index = i;
 				break;
 			}			

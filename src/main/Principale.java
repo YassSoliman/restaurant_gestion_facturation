@@ -34,8 +34,8 @@ public class Principale {
 		}
 		
 		if(validerFormat(contenuFic)) {
-			Client[] tabClients = lireClients(contenuFic);
-			creerFacture(tabClients, nomFicCommandes);
+			lireClients(contenuFic);
+			creerFacture(nomFicCommandes);
 			OutilsFichier.fermerFicTexteLecture( fic, nomFicCommandes );
 		} else {
 			System.out.println("Le fichier ne respecte pas le format demandé !");
@@ -62,22 +62,16 @@ public class Principale {
 		}
 	}
 	
-	private static Client[] lireClients(String contenu) {
-		Client[] tabClients = new Client[0];
-		Plat[] tabPlats = new Plat[0];
-		Commande[] tabCommande = new Commande[0];
-		
-		tabClients = Client.creerClients(contenu);
-		tabPlats = Plat.creerPlat(tabClients, contenu);
-		tabCommande = Commande.creerCommandes(tabClients, tabPlats, contenu);
-		
-		return tabClients;
+	private static void lireClients(String contenu) {
+		Client.creerClients(contenu);
+		Plat.creerPlat(contenu);
+		Commande.creerCommandes(contenu);		
 	}
 	
-	private static void creerFacture(Client[] tabClients, String nomFic) {
+	private static void creerFacture(String nomFic) {
 		String message = "Bienvenue chez Barette!\nFactures:\n";
 		
-		for (Client cli : tabClients) {
+		for (Client cli : Client.getListeClients()) {
 			message += cli.getNomClient() + " " + OutilsAffichage.formaterMonetaire(cli.getFacture().calculerFacture(), 2) + "\n";
 		}
 		
