@@ -28,6 +28,7 @@ public class Client {
 		this.setNomClient(nomClient);
 		this.listeCommande = new ArrayList<>();
 		Client.getListeClients().add(this);
+		this.facture = new Facture(this);
 	}
 
 	public String getNomClient() {

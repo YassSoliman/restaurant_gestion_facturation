@@ -1,9 +1,16 @@
 package main;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Facture {
-	
+	private static List<Facture> listeFactures = new ArrayList<Facture>();
 	private Client client;
 	private double prix;
+	
+	public static List<Facture> getListeFactures() {
+		return listeFactures;
+	}
 	
 	public Client getClient() {
 		return this.client;
@@ -19,12 +26,14 @@ public class Facture {
 	
 	public Facture() {}
 	
-	public Facture(Client client, double prix) {
+	//remove prix
+	public Facture(Client client) {
 		this.client = client;
-		setPrix(prix);
+		//add facture to listeFacture
+		Facture.getListeFactures().add(this);
 	}
 
-	public double calculerFacture() {
+	public void calculerFacture() {
 		double prixFacture = 0;
 		//TODO ajouter TPS TVQ
 		for (int i = 0; i < client.getListeCommande().size(); i++) {
@@ -32,15 +41,15 @@ public class Facture {
 					client.getListeCommande().get(i).getQteCommande();
 		}
 		
-		return prixFacture;
+		setPrix(prixFacture);
 	}
 
 	@Override
 	public String toString() {
 		String facture = "";
 		
-		if (calculerFacture() != 0) {
-			facture = client.getNomClient() + " " + calculerFacture() + " $";
+		if (this.getPrix() != 0) {
+			facture = client.getNomClient() + " " + this.getPrix() + " $";
 		}
 		
 		return facture;
