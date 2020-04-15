@@ -21,4 +21,7 @@ public interface OutilsConstantes {
 	
 	public static final char OUI = 'O';
 	public static final char NON = 'N';
+	
+	public static final double TPS = 0.05;
+	public static final double TVQ = 1.09975;
 }
