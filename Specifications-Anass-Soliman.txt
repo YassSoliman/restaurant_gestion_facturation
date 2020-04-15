@@ -1,16 +1,21 @@
+----------------------------------------
+Fonctionalités:
+----------------------------------------
 1. Les taxes sont maintenant appliquées (à raison de TPS 5% et TVQ 9,975%).
-	- Créer des nouvelles constantes de type réel dans le fichier utilitaire OutilsConstantes.java pour le TPS qui sera équivalent a 1.05 et pour le TVQ
+	- Créer des nouvelles constantes de type réel dans le fichier utilitaire OutilsConstantes.java pour le TPS qui sera équivalent a 0.05 et pour le TVQ
 	  qui sera équivalent à 1.09975.
 	   
 	- Ajouter les valeur des constantes OutilsConstantes.TPS et OutilsConstantes.TVQ dans le calcul du prix de la facture dans la methode calculerFacture()
- 	  de la classe Client. 
+ 	  de la classe Facture. 
 
 
 2. Le calcul de la facture doit se faire par client.
 	Le calcul de la facture se fait deja par client individuel. Il faut seulement implementer les modifications de calcul et d'impression de facture.
 	
-	Créer la classe Facture qui contient les méthodes suivantes:
-		public Client getClient()
-		public double calculerFacture()
-		afficherFacture() -> return getClient.getNomClient() + calculerFacture() (return "" si invalid)
-		
+	-Créer la classe Facture qui contient les méthodes suivantes:
+		*public Client getClient()
+		*public double getPrix()
+		*public void setPrix(prix)
+		*public double calculerFacture()
+		*afficherFacture() -> return getClient.getNomClient() + calculerFacture() (return "" si invalid)
+	
