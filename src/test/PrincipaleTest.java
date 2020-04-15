@@ -14,24 +14,23 @@ public class PrincipaleTest {
 	public void testValiderQuantite() {
 		Client client = new Client("Client A");
 		Plat plat = new Plat("Plat A", 19.99);
-		Commande commande = new Commande(client, plat, 0);
+		int quantite = 0;
+		Commande commande = new Commande(client, plat, quantite);
 		client.ajouterCommande(commande);
-		
-		String quantite = Integer.toString(commande.getQteCommande());
-		
-		assertEquals("La quantité de plat commandé est invalide.", client.validerQuantite(quantite));
+				
+		assertEquals("La quantité de plat commandé est invalide.", Commande.validerQuantite(quantite));
 	}
 	
 	@Test
 	public void testValiderClient() {
-		Client client = null;
+		Client client = new Client("Client A");
 		Plat plat = null;
-		Commande commande = null;
+		Commande commande = new Commande(client, plat, 0);;
 		client.ajouterCommande(commande);
 			
 		String chaineValidation = "Le client " + client.getNomClient() + " n'existe pas.";
 		
-		assertEquals(chaineValidation, client.validerClient(client));
+		assertEquals(chaineValidation, Client.validerClient(client));
 	}
 	
 	@Test
