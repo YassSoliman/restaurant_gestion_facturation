@@ -36,7 +36,7 @@ Commande.validerCommande(commande)
 		"Commande : <commande> 
 		Détails : <message(s) d'erreur des méthodes>"
 Commande.validerQuantite(quantite)
-	prend un objet de type String qui signifie la quantité de plat commandé
+	prend un objet de type int qui signifie la quantité de plat commandé
 	et vérifie s'il consiste d'un chiffre entier positif plus grand que 0.
 	Si invalide retourne le message d'erreur : "La quantité de plat commandé 
 	est invalide."

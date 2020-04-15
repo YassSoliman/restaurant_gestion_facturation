@@ -4,10 +4,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Commande {
+	private static List<Commande> listeCommandes = new ArrayList<Commande>();
+	public static String erreurs = "";
+	
 	private Client client;
 	private Plat platCommander;
 	private int qteCommande;
 	
+	public static List<Commande> getListeCommandes() {
+		return listeCommandes;
+	}
+
+	public static void setListeCommandes(List<Commande> listeCommandes) {
+		Commande.listeCommandes = listeCommandes;
+	}
+	
+	public static String validerCommande(Commande commande) {
+		String messageErreurs = "Commande : " + commande.toString() + "\nDétails : \n";
+		
+		// TODO : messageErreurs += validerQuantite() + "\n" + validerClient() + "\n" + validerPlat(); 
+		
+		return messageErreurs;
+	}
+	
+	public static String validerQuantite(int qteCommande) {		
+		return qteCommande > 0 ? "" : "La quantité de plat commandé est invalide.";
+	}
+
 	public Commande(Client client, Plat platCommander, int qteCommande) {
 		this.client = client;
 		this.platCommander = platCommander;
@@ -40,7 +63,7 @@ public class Commande {
 
 	@Override
 	public String toString() {
-		return "Commande [client=" + client + ", platCommander=" + platCommander + ", qteCommande=" + qteCommande + "]";
+		return client + " " + platCommander + " " + qteCommande;
 	}
 
 	public static Commande[] creerCommandes(Client[] tabClients, Plat[] tabPlats, String contenu) {
