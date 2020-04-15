@@ -1,4 +1,6 @@
-Tâche 1 - Valider les commandes
+###################################
+# Tâche 1 - Valider les commandes #
+###################################
 1 - Il peut y avoir des commandes incorrectes. Une commande est incorrecte si :
 	a - Le nom du client ou le plat n’existe pas (vu précédemment).
 	b - Des chiffres sont erronés (quantité de plats commandés).
@@ -15,27 +17,54 @@ Tâche 1 - Valider les commandes
 		méthode appèle une autre méthode validerQuantite(quantite) qui vérifie
 		si la quantité est un chiffre entier positif plus grand que 0.
 
-validerCommande(commande) : prend un objet de type Commande en paramètre. Appèle les méthodes
-							validerPlat(plat), validerClient(client) et validerQuantite(quantite).
-							Si une de ces méthode retourne invalide, affiche le message suivant :
-							"Commande : <commande> 
-							 Détails : <message(s) d'erreur des méthodes>"
+############################
+# Fonctionalités à ajouter #
+############################
 
-validerPlat(plat) 		  : prend un objet de type Plat en paramètre. Vérifie que la plat existe
-							dans la liste de plat dans le fichier d'entrée. Si invalide retourne 
-							le message d'erreur : "Le plat <nom du plat> n'existe pas."
+#################
+# Commande.java #
+#################
+private static List<Commande> listeCommandes
+Commande.getListeCommandes()
+Commande.setListeCommandes(listeCommandes)
+Commande.validerCommande(commande)
+	Prend un objet de type Commande en paramètre. Appèle les méthodes
+	validerPlat(commande.getPlatCommander()), validerClient(commande.getClient()) 
+	et validerQuantite(commande.getQteCommande()).
+	Si une de ces méthode retourne invalide, affiche le message suivant :
+		"Commande : <commande> 
+		Détails : <message(s) d'erreur des méthodes>"
+Commande.validerQuantite(quantite)
+	prend un objet de type String qui signifie la quantité de plat commandé
+	et vérifie s'il consiste d'un chiffre entier positif plus grand que 0.
+	Si invalide retourne le message d'erreur : "La quantité de plat commandé 
+	est invalide."
 
-validerClient(client)	  : prend un objet de type Client en paramètre. Vérifie que le client
-							existe dans la liste de client dans le fichier d'entrée. Si invalide
-							retourne le message d'erreur : "Le client <nom du client> n'existe pas."
+#############
+# Plat.java #
+#############
+private static List<Plat> listePlats;
+Plat.getListePlats()
+Plat.setListePlats(listePlats)
+Plat.validerPlat(plat)
+	Prend un objet de type Plat en paramètre. Vérifie que la plat existe
+	dans la liste de plat dans listePlats. Si invalide retourne 
+	le message d'erreur : "Le plat <nom du plat> n'existe pas."
+									
+###############
+# Client.java #
+###############
+private static List<Client> listeClients;
+Client.getListeClients()
+Client.setListeClients(listeClients)
+Client.validerClient(client)
+	prend un objet de type Client en paramètre. Vérifie que le client
+	existe dans la liste de client dans listeClients. Si invalide
+	retourne le message d'erreur : "Le client <nom du client> n'existe pas."
 
-validerQuantite(quantite) : prend un objet de type String qui signifie la quantité de plat commandé
-							et vérifie s'il consiste d'un chiffre entier positif plus grand que 0.
-							Si invalide retourne le message d'erreur : "La quantité de plat commandé 
-							est invalide."
-
-Tâche 2 - Afficher une facture
-
+##################################
+# Tâche 2 - Afficher une facture #
+##################################
 2 - En sortie, on souhaite avoir une facture affichée à l’écran (terminal) et éditée dans le
 fichier (Facture-du-date-heure.txt).
 
