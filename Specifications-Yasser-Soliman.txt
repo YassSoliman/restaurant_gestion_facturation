@@ -25,8 +25,7 @@
 # Commande.java #
 #################
 private static List<Commande> listeCommandes
-private static String erreurs;
-Commande.getErreurs()
+public static String erreurs;
 Commande.getListeCommandes()
 Commande.setListeCommandes(listeCommandes)
 Commande.validerCommande(commande)
