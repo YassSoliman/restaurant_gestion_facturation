@@ -1,6 +1,12 @@
 package main;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import outilsjava.OutilsAffichage;
 import outilsjava.OutilsFichier;
@@ -76,10 +82,11 @@ public class Principale {
 		}
 		
 		System.out.print("\n" + message);
+				
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH'h'mm");
+		Date date = new Date();
 		
-		String[] nomFicSplit = nomFic.split("\\.");
-		
-		ecrireFichier(nomFicSplit[0] + "Sortie.txt", message);
+		ecrireFichier("Facture-du-" + dateFormat.format(date) + ".txt", message);
 	}
 	
 	private static boolean validerFormat(String contenu) {
