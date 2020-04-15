@@ -75,7 +75,7 @@ public class Principale {
 	private static void lireClients(String contenu) {
 		Client.creerClients(contenu);
 		Plat.creerPlat(contenu);
-		Commande.creerCommandes(contenu);		
+		Commande.creerCommandes(contenu);
 	}
 	
 	

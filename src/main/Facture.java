@@ -48,7 +48,8 @@ public class Facture {
 		String message = "Bienvenue chez Barette!\nFactures:\n";
 		
 		for (Client cli : Client.getListeClients()) {
-			message += cli.getNomClient() + " " + OutilsAffichage.formaterMonetaire(cli.getFacture().getPrix(), 2) + "\n";
+			cli.getFacture().calculerFacture();
+			message += cli.getFacture();
 		}
 		
 		System.out.print("\n" + message);
@@ -61,9 +62,8 @@ public class Facture {
 	public String toString() {
 		String facture = "";
 		
-		if (this.getPrix() != 0) {
-			facture = client.getNomClient() + " " + this.getPrix() + " $";
-		}
+		facture += client.getNomClient() + " " + OutilsAffichage.formaterMonetaire(client.getFacture().getPrix(), 2) + "\n";
+
 		
 		return facture;
 	}
