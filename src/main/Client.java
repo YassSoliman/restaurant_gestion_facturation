@@ -22,7 +22,11 @@ public class Client {
 		return Client.getListeClients().contains(client) ? "" : "Le client " + client.getNomClient() + " n'existe pas.";
 	}
 
-	public Client() {}
+	public Client() {
+		this.setNomClient("");
+		this.listeCommande = new ArrayList<>();
+		this.facture = new Facture(this);
+	}
 	
 	public Client(String nomClient) {
 		this.setNomClient(nomClient);

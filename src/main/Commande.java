@@ -5,7 +5,9 @@ import java.util.List;
 
 public class Commande {
 	private static List<Commande> listeCommandes = new ArrayList<Commande>();
-	public static String erreurs = "";
+	public static String erreurs = "\n#####################\n"
+								 + "# Message d'erreurs #\n"
+								 + "#####################\n";
 	
 	private Client client;
 	private Plat platCommander;
@@ -20,11 +22,17 @@ public class Commande {
 	}
 	
 	public static String validerCommande(Commande commande) {
-		String messageErreurs = "Commande : " + commande.toString() + "\nDétails : \n";
+		String messageErreurs = "\nCommande : " + commande.toString() + "\nDétails : \n";
 		
-		messageErreurs += validerQuantite(commande.getQteCommande()) 
-				+ "\n\t\t" + Client.validerClient(commande.getClient()) 
-				+ "\n\t\t" + Plat.validerPlat(commande.getPlatCommander()); 
+		String messageQuantite = validerQuantite(commande.getQteCommande());
+		String messageClient = Client.validerClient(commande.getClient());
+		String messagePlat = Plat.validerPlat(commande.getPlatCommander());
+				
+		messageErreurs += "\t" + (messageQuantite + "\n\t" + messageClient + "\n\t" + messagePlat).trim() + "\n";
+		
+		if (messageErreurs.trim().equals(("Commande : " + commande.toString() + "\nDétails : \n").trim())) {
+			messageErreurs = "";
+		}
 		
 		return messageErreurs;
 	}
@@ -39,6 +47,7 @@ public class Commande {
 		this.qteCommande = qteCommande;
 		Commande.getListeCommandes().add(this);
 		client.ajouterCommande(this);
+		Commande.erreurs += Commande.validerCommande(this);
 	}
 	
 	public Client getClient() {
@@ -67,7 +76,7 @@ public class Commande {
 
 	@Override
 	public String toString() {
-		return client + " " + platCommander + " " + qteCommande;
+		return client + " " + platCommander.getNomPlat() + " " + qteCommande;
 	}
 
 	public static void creerCommandes(String contenu) {
@@ -86,8 +95,20 @@ public class Commande {
 					int indexClient = Client.obtenirClient(ligneCommande[0]);
 					int indexPlat = Plat.obtenirPlat(ligneCommande[1]);					
 					
-					new Commande(Client.getListeClients().get(indexClient), 
-							Plat.getListePlats().get(indexPlat), Integer.parseInt(ligneCommande[2]));
+					Client client = new Client();
+					client.setNomClient(ligneCommande[0]);
+					Plat plat = new Plat();
+					plat.setNomPlat(ligneCommande[1]);
+					
+					if (indexClient != -1) {
+						client = Client.getListeClients().get(indexClient);
+					}
+					
+					if (indexPlat != -1) {
+						plat = Plat.getListePlats().get(indexPlat);
+					}
+					
+					new Commande(client, plat, Integer.parseInt(ligneCommande[2]));
 				}
 			}					
 		}

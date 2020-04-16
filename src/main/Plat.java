@@ -22,6 +22,11 @@ public class Plat {
 		return Plat.getListePlats().contains(plat) ? "" : "Le plat " + plat.getNomPlat() + " n'existe pas.";
 	}
 
+	public Plat() {
+		this.nomPlat = "";
+		this.prixPlat = 0.00;
+	}
+	
 	public Plat(String nom, double prix) {
 		this.nomPlat = nom;
 		this.prixPlat = prix;
