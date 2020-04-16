@@ -28,7 +28,7 @@ public class Commande {
 		String messageClient = Client.validerClient(commande.getClient());
 		String messagePlat = Plat.validerPlat(commande.getPlatCommander());
 				
-		messageErreurs += "\t" + (messageQuantite + "\n\t" + messageClient + "\n\t" + messagePlat).trim() + "\n";
+		messageErreurs += "\t" + (messageQuantite + "\n\t" + messageClient + "\n\t" + messagePlat).trim();
 		
 		if (messageErreurs.trim().equals(("Commande : " + commande.toString() + "\nDétails : \n").trim())) {
 			messageErreurs = "";
