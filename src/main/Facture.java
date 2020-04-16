@@ -62,8 +62,9 @@ public class Facture {
 	public String toString() {
 		String facture = "";
 		
+		if(client.getFacture().getPrix() != 0) {
 		facture += client.getNomClient() + " " + OutilsAffichage.formaterMonetaire(client.getFacture().getPrix(), 2) + "\n";
-
+		}
 		
 		return facture;
 	}
