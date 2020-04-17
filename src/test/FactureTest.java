@@ -20,11 +20,6 @@ public class FactureTest {
 	}
 	
 	@Test
-	public void testFormatFacture() {
-		
-	}
-	
-	@Test
 	public void testAffichageErreurs() {
 		Client client = new Client();
 		client.setNomClient("Client");
@@ -38,7 +33,7 @@ public class FactureTest {
 	}
 	
 	@Test
-	public void testCalculerFacture() {
+	public void testCalculerFactureTaxes() {
 		Client client = new Client("Client A");
 		Plat plat = new Plat("Plat A", 19.99);
 		Commande commande = new Commande(client, plat, 1);
@@ -46,5 +41,14 @@ public class FactureTest {
 		double prixValidation = (commande.getPlatCommander().getPrixPlat() * commande.getQteCommande()) * (1.09975 + 0.05);
 	
 		assertEquals(prixValidation, client.getFacture().getPrix(), 0.01);
+	}
+	
+	@Test
+	public void testCalculFactureParClient() {
+		Client client = new Client("Client A");
+		Plat plat = new Plat("Plat A", 19.99);
+		Commande commande = new Commande(client, plat, 1);
+		
+		
 	}
 }
