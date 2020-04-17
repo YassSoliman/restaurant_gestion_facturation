@@ -15,9 +15,6 @@ package outilsjava;
  */
 
 public interface OutilsConstantes {
-	// Constantes communes.
-	public static final String QUEST_CONTINUER = "\nAppuyez sur Entrée pour continuer. ";
-	public static final String MESS_FIN_PROG = "\nFin du programme.";
 	
 	public static final char OUI = 'O';
 	public static final char NON = 'N';

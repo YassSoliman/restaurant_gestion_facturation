@@ -20,6 +20,11 @@ public class FactureTest {
 	}
 	
 	@Test
+	public void testFormatFacture() {
+		
+	}
+	
+	@Test
 	public void testAffichageErreurs() {
 		Client client = new Client();
 		client.setNomClient("Client");
