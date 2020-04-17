@@ -36,7 +36,6 @@ public class Facture {
 
 	public void calculerFacture() {
 		double prixFacture = 0;
-		//TODO ajouter TPS TVQ
 		for (int i = 0; i < client.getListeCommande().size(); i++) {
 			prixFacture += client.getListeCommande().get(i).getPlatCommander().getPrixPlat() * 
 					client.getListeCommande().get(i).getQteCommande() * (OutilsConstantes.TPS + OutilsConstantes.TVQ);
@@ -65,7 +64,7 @@ public class Facture {
 		String facture = "";
 		
 		if(client.getFacture().getPrix() != 0) {
-		facture += client.getNomClient() + " " + OutilsAffichage.formaterMonetaire(client.getFacture().getPrix(), 2) + "\n";
+			facture += client.getNomClient() + " " + OutilsAffichage.formaterMonetaire(client.getFacture().getPrix(), 2) + "\n";
 		}
 		
 		return facture;
