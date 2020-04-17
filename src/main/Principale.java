@@ -39,6 +39,10 @@ public class Principale {
 		
 		if(validerFormat(contenuFic)) {
 			lireClients(contenuFic);
+							
+			if (Commande.erreurs.length() > 67) {
+				System.out.println(Commande.erreurs);
+			}
 						
 			String message = Facture.creerFacture();
 			
@@ -49,9 +53,7 @@ public class Principale {
 			OutilsFichier.fermerFicTexteLecture( fic, nomFicCommandes );
 		} else {
 			System.out.println("Le fichier ne respecte pas le format demandé !");
-		}
-		
-		
+		}				
 	}
 	
 	//Ecriture du fichier 

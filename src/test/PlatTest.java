@@ -12,10 +12,8 @@ public class PlatTest {
 
 	@Test
 	public void testValiderPlat() {
-		Client client = new Client();
-		Plat plat = new Plat(null, 0);
-		Commande commande = null;
-		client.ajouterCommande(commande);
+		
+		Plat plat = new Plat();
 			
 		String chaineValidation = "Le plat " + plat.getNomPlat() + " n'existe pas.";
 		

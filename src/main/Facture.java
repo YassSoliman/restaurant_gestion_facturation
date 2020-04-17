@@ -47,15 +47,14 @@ public class Facture {
 	
 	public static String creerFacture() {
 		String message = "Bienvenue chez Barette!\nFactures:\n";
-		
+	
 		for (Client cli : Client.getListeClients()) {
-			message += cli.getFacture();
+			message += cli.getFacture();				
 		}
 		
 		System.out.print("\n" + message);
 			
-		return message;
-		
+		return message;	
 	}
 
 	@Override

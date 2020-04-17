@@ -10,4 +10,5 @@ Commandes :
 Roger Poutine 1
 Céline Frites 2
 Céline Repas_Poulet 1
+gorge kimchi -4
 Fin
