@@ -103,7 +103,7 @@ public class Client {
 		}
 
 		Client cli = (Client) obj;
-
-		return this.getNomClient() == cli.getNomClient();
+		
+		return this.getNomClient().compareTo(cli.getNomClient()) == 0;
 	}
 }

@@ -100,6 +100,7 @@ public class Plat {
 
 		Plat plat = (Plat) obj;
 
-		return this.getNomPlat() == plat.getNomPlat() && this.getPrixPlat() == plat.getPrixPlat();
+		return this.getNomPlat().compareTo(plat.getNomPlat()) == 0 
+				&& Double.compare(this.getPrixPlat(), plat.getPrixPlat()) == 0;
 	}
 }

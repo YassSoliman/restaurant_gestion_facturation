@@ -50,6 +50,12 @@ public class Commande {
 		Commande.erreurs += Commande.validerCommande(this);
 	}
 	
+	public Commande() {
+		this.client = new Client();
+		this.platCommander = new Plat();
+		this.qteCommande = 0;
+	}
+
 	public Client getClient() {
 		return client;
 	}
@@ -128,6 +134,6 @@ public class Commande {
 
 		return this.getClient().equals(com.getClient()) 
 				&& this.getPlatCommander().equals(com.getPlatCommander()) 
-				&& this.getQteCommande() == com.getQteCommande();
+				&& Integer.compare(this.getQteCommande(), com.getQteCommande()) == 0;
 	}
 }

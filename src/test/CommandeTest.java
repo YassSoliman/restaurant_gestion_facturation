@@ -70,5 +70,17 @@ public class CommandeTest {
 		Plat.creerPlat(contenu);
 		Commande.creerCommandes(contenu);
 		
+		Client cli = new Client();
+		cli.setNomClient("Roger");
+		Plat plat = new Plat();
+		plat.setNomPlat("Poutine");
+		plat.setPrixPlat(10.5);
+		Commande com = new Commande();
+		com.setClient(cli);
+		com.setPlatCommander(plat);
+		com.setQteCommande(1);
+		
+		assertTrue(Commande.getListeCommandes().contains(com));
+		
 	}
 }
