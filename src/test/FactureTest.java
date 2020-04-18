@@ -49,6 +49,6 @@ public class FactureTest {
 		Plat plat = new Plat("Plat A", 19.99);
 		Commande commande = new Commande(client, plat, 1);
 		
-		
+		assertEquals("Client A 22,98 $\n", client.getFacture().toString());
 	}
 }
