@@ -72,7 +72,7 @@ public class Principale {
 		}
 	}
 	
-	private static void lireClients(String contenu) {
+	public static void lireClients(String contenu) {
 		Client.creerClients(contenu);
 		Plat.creerPlat(contenu);
 		Commande.creerCommandes(contenu);
@@ -80,7 +80,7 @@ public class Principale {
 	
 	
 	
-	private static boolean validerFormat(String contenu) {
+	public static boolean validerFormat(String contenu) {
 		boolean valide = true;
 		boolean clientsValide = false;
 		boolean platsValide = false;
