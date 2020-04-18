@@ -1,11 +1,11 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import main.Client;
-import main.Commande;
 import main.Plat;
 
 public class PlatTest {
@@ -22,27 +22,44 @@ public class PlatTest {
 	
 	@Test
 	public void testCreerPlat() {
+
+		Plat.getListePlats().clear();
+		// Cas contenu vide
+		Plat.creerPlat("");
+		assertTrue(Plat.getListePlats().isEmpty());
 		
+		// Cas ligne plat invalide
+		String contenu = "Clients :\n" + 
+				"Roger\n" + 
+				"Céline\n" + 
+				"Steeve\n" + 
+				"Plats :\n" + 
+				"Poutine\n" + 
+				"Frites 2.5\n" + 
+				"Repas_Poulet 15.75\n" + 
+				"Commandes :\n" + 
+				"Roger Poutine 1\n" + 
+				"Céline Frites 2\n" + 
+				"Céline Repas_Poulet 1\n" + 
+				"Fin";
+		Plat.creerPlat(contenu);
 		Plat plat = new Plat();
 		plat.setNomPlat("Poutine");
-		plat.setPrixPlat(10.5);
+		assertFalse(Plat.getListePlats().contains(plat));
+	}
+	
+	@Test
+	public void testConstructeurPlat() {
+		Plat plat = new Plat("Plat", 10.00);
 		
-			String contenu = "Clients :\n" + 
-					"Roger\n" + 
-					"Céline\n" + 
-					"Steeve\n" + 
-					"Plats :\n" + 
-					"Poutine 10.5\n" + 
-					"Frites 2.5\n" + 
-					"Repas_Poulet 15.75\n" + 
-					"Commandes :\n" + 
-					"Roger Poutine 1\n" + 
-					"Céline Frites 2\n" + 
-					"Céline Repas_Poulet 1\n" + 
-					"Fin";
-		Plat.creerPlat(contenu);
-	//	assertEquals(contenu, Plat.validerPlat(plat));
-		assertTrue(Plat.getListePlats().get(0).getNomPlat()==plat.getNomPlat());
+		assertTrue(Plat.getListePlats().contains(plat));
+	}
+	
+	@Test
+	public void testToString() {
+		Plat plat = new Plat("Plat", 10.00);
 		
-	}	
+		assertEquals(plat.toString(), plat.getNomPlat() + " " + plat.getPrixPlat());
+	}
+
 }
