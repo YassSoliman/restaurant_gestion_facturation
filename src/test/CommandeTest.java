@@ -138,4 +138,29 @@ public class CommandeTest {
 		assertTrue(Commande.getListeCommandes().contains(com));
 				
 	}
+
+	@Test
+	public void testEquals() {
+		Client client = new Client("George");
+		Plat plat = new Plat("Poulet", 12.5);
+		Commande commande = new Commande(client, plat, 2);
+		
+		// Cas commande compare avec elle meme
+		assertTrue(commande.equals(commande));
+		
+		// Cas commande compare avec objet pas de type commande
+		assertFalse(commande.equals(new String("Pas une commande")));
+		
+		// Cas commande compare avec commande plat different et qte plus petite
+		Plat plat2 = new Plat("Coke", 2.5);
+		Commande commande2 = new Commande(client, plat2, 1);
+		
+		assertFalse(commande.equals(commande2));
+		
+		// Cas commande compare avec commande qte plus grande
+		Commande commande3 = new Commande(client, plat, 5);
+		
+		assertFalse(commande.equals(commande3));
+		
+	}
 }
