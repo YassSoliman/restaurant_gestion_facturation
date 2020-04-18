@@ -26,6 +26,25 @@ public class PlatTest {
 		// Cas contenu vide
 		Plat.creerPlat("");
 		assertTrue(Plat.getListePlats().isEmpty());
+		
+		// Cas ligne plat invalide
+		String contenu = "Clients :\n" + 
+				"Roger\n" + 
+				"Céline\n" + 
+				"Steeve\n" + 
+				"Plats :\n" + 
+				"Poutine\n" + 
+				"Frites 2.5\n" + 
+				"Repas_Poulet 15.75\n" + 
+				"Commandes :\n" + 
+				"Roger Poutine 1\n" + 
+				"Céline Frites 2\n" + 
+				"Céline Repas_Poulet 1\n" + 
+				"Fin";
+		Plat.creerPlat(contenu);
+		Plat plat = new Plat();
+		plat.setNomPlat("Poutine");
+		assertFalse(Plat.getListePlats().contains(plat));
 	}
 	
 	@Test
