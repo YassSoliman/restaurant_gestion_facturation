@@ -80,7 +80,7 @@ public class Principale {
 	
 	
 	
-	private static boolean validerFormat(String contenu) {
+	public static boolean validerFormat(String contenu) {
 		boolean valide = true;
 		boolean clientsValide = false;
 		boolean platsValide = false;
