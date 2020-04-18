@@ -39,13 +39,15 @@ public class Principale {
 		
 		if(validerFormat(contenuFic)) {
 			lireClients(contenuFic);
-										
+
 			String message = Facture.creerFacture();
 			
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH'h'mm");
 			Date date = new Date();
+			
+			String dateFormater = dateFormat.format(date);
 						
-			ecrireFichier("Facture-du-" + dateFormat.format(date) + ".txt", message);
+			ecrireFichier("Facture-du-" + dateFormater + ".txt", message);
 			OutilsFichier.fermerFicTexteLecture( fic, nomFicCommandes );
 		} else {
 			System.out.println("Le fichier ne respecte pas le format demandé !");

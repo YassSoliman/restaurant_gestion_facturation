@@ -1,16 +1,11 @@
 package test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
 import main.Client;
-import main.Commande;
-import main.Facture;
-import main.Plat;
 
 public class ClientTest {
 
@@ -22,24 +17,12 @@ public class ClientTest {
 		
 		assertEquals(chaineValidation, Client.validerClient(client));
 	}
-
-	@Test
-	public void testAfficherCommandes() {
-		
-
-		
-		
-		Client client = new Client();
-		client.setNomClient("Client");
-		Plat plat = new Plat();
-		plat.setNomPlat("Plat");
-		Commande commande = new Commande(client, plat, 0);
-		
-	//	String chaineValidation += client.afficherCommandes();
-		
-	//	assertTrue(client.afficherCommandes() == Commande.getListeCommandes());
-		
-	//	assertEquals(chaineValidation, client.afficherCommandes());
 	
+	@SuppressWarnings("unlikely-arg-type")
+	@Test
+	public void testEqualsClient() {
+		Client client = new Client();
+		
+		assertFalse(client.equals(client.getFacture()));
 	}
 }

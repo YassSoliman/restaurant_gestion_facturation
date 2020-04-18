@@ -19,14 +19,15 @@ public class Commande {
 	
 	public static String validerCommande(Commande commande) {
 		String messageErreurs = "\nCommande : " + commande.toString() + "\nDétails : \n";
-		
+		String messageErreursTrim = "";
 		String messageQuantite = validerQuantite(commande.getQteCommande());
 		String messageClient = Client.validerClient(commande.getClient());
 		String messagePlat = Plat.validerPlat(commande.getPlatCommander());
 				
 		messageErreurs += "\t" + (messageQuantite + "\n\t" + messageClient + "\n\t" + messagePlat).trim();
+		messageErreursTrim = ("Commande : " + commande.toString() + "\nDétails : \n").trim();
 		
-		if (messageErreurs.trim().equals(("Commande : " + commande.toString() + "\nDétails : \n").trim())) {
+		if (messageErreurs.trim().equals(messageErreursTrim)) {
 			messageErreurs = "";
 		}
 		
@@ -53,7 +54,7 @@ public class Commande {
 	}
 
 	public Client getClient() {
-		return client;
+		return this.client;
 	}
 
 	public void setClient(Client client) {
@@ -69,7 +70,7 @@ public class Commande {
 	}
 
 	public int getQteCommande() {
-		return qteCommande;
+		return this.qteCommande;
 	}
 
 	public void setQteCommande(int qteCommande) {
@@ -78,7 +79,7 @@ public class Commande {
 
 	@Override
 	public String toString() {
-		return client + " " + platCommander.getNomPlat() + " " + qteCommande;
+		return client + " " + this.platCommander.getNomPlat() + " " + this.qteCommande;
 	}
 
 	public static void creerCommandes(String contenu) {
@@ -88,9 +89,11 @@ public class Commande {
 		
 		for(int i = tailleListeClients + tailleListePlats + 2; i < lignesContenu.length; i++) {
 			String ligne = lignesContenu[i];
-			if (ligne.trim().contentEquals("Fin"))
+			String ligneTrim = ligne.trim();
+			
+			if (ligneTrim.contentEquals("Fin"))
 				break;
-			if (!ligne.trim().contentEquals("Commandes :")) {
+			if (!ligneTrim.contentEquals("Commandes :")) {
 				String[] ligneCommande = ligne.split(" ");
 				
 				if(ligneCommande.length == 3) {					
