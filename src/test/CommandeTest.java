@@ -53,6 +53,7 @@ public class CommandeTest {
 
 	@Test
 	public void testCreerCommandes() {
+		// Cas creerCommandes fonctionnel
 		String contenu = "Clients :\n" + 
 				"Roger\n" + 
 				"Céline\n" + 
@@ -82,5 +83,59 @@ public class CommandeTest {
 		
 		assertTrue(Commande.getListeCommandes().contains(com));
 		
+		
+		// Cas creerCommande ou ligneCommande != 3
+		Commande.getListeCommandes().clear();
+		Plat.getListePlats().clear();
+		Client.getListeClients().clear();
+		contenu = "Clients :\n" + 
+				"Roger\n" + 
+				"Céline\n" + 
+				"Steeve\n" + 
+				"Plats :\n" + 
+				"Poutine 10.5\n" + 
+				"Frites 2.5\n" + 
+				"Repas_Poulet 15.75\n" + 
+				"Commandes :\n" + 
+				"Roger 1\n" + 
+				"Céline Frites 2\n" + 
+				"Céline Repas_Poulet 1\n" + 
+				"Fin";
+		Client.creerClients(contenu);
+		Plat.creerPlat(contenu);
+		Commande.creerCommandes(contenu);
+		
+		assertFalse(Commande.getListeCommandes().contains(com));
+		
+		// Cas ou le client et le plat n'existe pas
+		Commande.getListeCommandes().clear();
+		Plat.getListePlats().clear();
+		Client.getListeClients().clear();
+		contenu = "Clients :\n" + 
+				"Roger\n" + 
+				"Céline\n" + 
+				"Steeve\n" + 
+				"Plats :\n" + 
+				"Poutine 10.5\n" + 
+				"Frites 2.5\n" + 
+				"Repas_Poulet 15.75\n" + 
+				"Commandes :\n" + 
+				"George Jus_Pomme 1\n" + 
+				"Céline Frites 2\n" + 
+				"Céline Repas_Poulet 1\n" + 
+				"Fin";
+		cli.setNomClient("George");
+		com.setClient(cli);
+		plat.setNomPlat("Jus_Pomme");
+		plat.setPrixPlat(0);
+		com.setPlatCommander(plat);
+		
+		
+		Client.creerClients(contenu);
+		Plat.creerPlat(contenu);
+		Commande.creerCommandes(contenu);
+		
+		assertTrue(Commande.getListeCommandes().contains(com));
+				
 	}
 }

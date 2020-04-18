@@ -16,10 +16,6 @@ public class Commande {
 	public static List<Commande> getListeCommandes() {
 		return listeCommandes;
 	}
-
-	public static void setListeCommandes(List<Commande> listeCommandes) {
-		Commande.listeCommandes = listeCommandes;
-	}
 	
 	public static String validerCommande(Commande commande) {
 		String messageErreurs = "\nCommande : " + commande.toString() + "\nDétails : \n";
