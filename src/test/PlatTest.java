@@ -49,4 +49,10 @@ public class PlatTest {
 		Plat.creerPlat("");
 		assertTrue(Plat.getListePlats().isEmpty());
 	}
+	
+	public void testConstructeurPlat() {
+		Plat plat = new Plat("Plat", 10.00);
+		
+		assertTrue(Plat.getListePlats().contains(plat));
+	}
 }
