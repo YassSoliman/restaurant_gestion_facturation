@@ -13,10 +13,6 @@ public class Client {
 	public static List<Client> getListeClients() {
 		return listeClients;
 	}
-//TODO reunisage
-	public static void setListeClients(List<Client> listeClients) {
-		Client.listeClients = listeClients;
-	}
 
 	public static String validerClient(Client client) {
 		return Client.getListeClients().contains(client) ? "" : "Le client " + client.getNomClient() + " n'existe pas.";
