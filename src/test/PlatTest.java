@@ -62,4 +62,26 @@ public class PlatTest {
 		assertEquals(plat.toString(), plat.getNomPlat() + " " + plat.getPrixPlat());
 	}
 
+	@Test
+	public void testEquals() {
+		// Cas plats identique
+		Plat plat = new Plat("Plat A", 10.5);
+		assertTrue(plat.equals(plat));
+		
+		// Cas plat comparer a un objet qui n'est pas un plat
+		String pasPlat = new String("Pas un plat");
+		assertFalse(plat.equals(pasPlat));
+		
+		// Cas plat comparer a plat plus cher et nom identique
+		Plat platCher = new Plat("Plat A", 15.00);
+		assertFalse(plat.equals(platCher));
+		
+		// Cas plat comparer a plat moins cher et nom identique
+		Plat platMoinsCher = new Plat("Plat A", 5.00);
+		assertFalse(plat.equals(platMoinsCher));
+		
+		// Cas plat comparer a plat different avec meme nom et prix
+		Plat platB = new Plat("Plat A", 10.5);
+		assertTrue(plat.equals(platB));		
+	}
 }

@@ -13,10 +13,6 @@ public class Plat {
 	public static List<Plat> getListePlats() {
 		return listePlats;
 	}
-
-	public static void setListePlats(List<Plat> listePlats) {
-		Plat.listePlats = listePlats;
-	}
 	
 	public static String validerPlat(Plat plat) {		
 		return Plat.getListePlats().contains(plat) ? "" : "Le plat " + plat.getNomPlat() + " n'existe pas.";
