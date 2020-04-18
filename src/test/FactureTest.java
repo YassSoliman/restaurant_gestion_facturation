@@ -1,6 +1,7 @@
 package test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -41,6 +42,27 @@ public class FactureTest {
 		double prixValidation = (commande.getPlatCommander().getPrixPlat() * commande.getQteCommande()) * (1.09975 + 0.05);
 	
 		assertEquals(prixValidation, client.getFacture().getPrix(), 0.01);
+	}
+	
+	@Test
+	public void testAucuneErreur() {
+		Client client = new Client("Client");
+		Plat plat = new Plat("Plat", 10.00);
+		Commande commande = new Commande(client, plat, 1);
+		
+		String contenue = Facture.creerFacture();
+		
+		assertFalse(contenue.contains(Commande.erreurs));
+	}
+	
+	@Test
+	public void testGetClient() {
+		Client client = new Client("Client");
+		Plat plat = new Plat("Plat", 10.00);
+		Commande commande = new Commande(client, plat, 1);
+		Facture facture = new Facture(client);
+		
+		assertEquals(client.getFacture().getPrix(), facture.getClient().getFacture().getPrix(), 0.01);
 	}
 	
 	@Test

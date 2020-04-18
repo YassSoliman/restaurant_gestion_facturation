@@ -27,8 +27,6 @@ public class Facture {
 		return this.prix;
 	}
 	
-	public Facture() {}
-	
 	public Facture(Client client) {
 		this.client = client;
 		Facture.getListeFactures().add(this);
