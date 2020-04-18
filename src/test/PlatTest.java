@@ -50,9 +50,17 @@ public class PlatTest {
 		assertTrue(Plat.getListePlats().isEmpty());
 	}
 	
+	@Test
 	public void testConstructeurPlat() {
 		Plat plat = new Plat("Plat", 10.00);
 		
 		assertTrue(Plat.getListePlats().contains(plat));
+	}
+	
+	@Test
+	public void testToString() {
+		Plat plat = new Plat("Plat", 10.00);
+		
+		assertEquals(plat.toString(), plat.getNomPlat() + " " + plat.getPrixPlat());
 	}
 }
