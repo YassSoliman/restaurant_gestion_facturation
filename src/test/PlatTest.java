@@ -19,4 +19,34 @@ public class PlatTest {
 		
 		assertEquals(chaineValidation, Plat.validerPlat(plat));
 	}	
+	
+	@Test
+	public void testCreerPlat() {
+		String contenu = "Clients :\n" + 
+				"Roger\n" + 
+				"Céline\n" + 
+				"Steeve\n" + 
+				"Plats :\n" + 
+				"Poutine 10.5\n" + 
+				"Frites 2.5\n" + 
+				"Repas_Poulet 15.75\n" + 
+				"Commandes :\n" + 
+				"Roger Poutine 1\n" + 
+				"Céline Frites 2\n" + 
+				"Céline Repas_Poulet 1\n" + 
+				"Fin";
+		// Cas creerPlat fonctionnel
+		Plat.getListePlats().clear();
+		Plat.creerPlat(contenu);
+		Plat plat = new Plat();
+		plat.setNomPlat("Frites");
+		plat.setPrixPlat(2.5);		
+		
+		assertTrue(Plat.getListePlats().contains(plat));
+		
+		// Cas contenu vide
+		Plat.getListePlats().clear();
+		Plat.creerPlat("");
+		assertTrue(Plat.getListePlats().isEmpty());
+	}
 }
