@@ -46,11 +46,18 @@ public class FactureTest {
 	
 	@Test
 	public void testAucuneErreur() {
+		Commande.erreurs = "\n#####################\n"
+				 + "# Message d'erreurs #\n"
+				 + "#####################\n";
+		
 		Client client = new Client("Client");
 		Plat plat = new Plat("Plat", 10.00);
 		Commande commande = new Commande(client, plat, 1);
 		
 		String contenue = Facture.creerFacture();
+		
+		System.out.println(contenue);
+		System.out.println(Commande.erreurs);
 		
 		assertFalse(contenue.contains(Commande.erreurs));
 	}
