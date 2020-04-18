@@ -19,4 +19,11 @@ public class PlatTest {
 		
 		assertEquals(chaineValidation, Plat.validerPlat(plat));
 	}	
+	
+	@Test
+	public void testConstructeurPlat() {
+		Plat plat = new Plat("Plat", 10.00);
+		
+		assertTrue(Plat.getListePlats().contains(plat));
+	}
 }
