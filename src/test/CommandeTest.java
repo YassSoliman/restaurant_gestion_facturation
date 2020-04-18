@@ -50,4 +50,25 @@ public class CommandeTest {
 		
 		assertEquals(chaineValidation, Commande.erreurs);
 	}
+
+	@Test
+	public void testCreerCommandes() {
+		String contenu = "Clients :\n" + 
+				"Roger\n" + 
+				"Céline\n" + 
+				"Steeve\n" + 
+				"Plats :\n" + 
+				"Poutine 10.5\n" + 
+				"Frites 2.5\n" + 
+				"Repas_Poulet 15.75\n" + 
+				"Commandes :\n" + 
+				"Roger Poutine 1\n" + 
+				"Céline Frites 2\n" + 
+				"Céline Repas_Poulet 1\n" + 
+				"Fin";
+		Client.creerClients(contenu);
+		Plat.creerPlat(contenu);
+		Commande.creerCommandes(contenu);
+		
+	}
 }

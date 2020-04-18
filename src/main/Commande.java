@@ -114,4 +114,20 @@ public class Commande {
 		}
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == this) {
+			return true;
+		}
+
+		if (!(obj instanceof Commande)) {
+			return false;
+		}
+
+		Commande com = (Commande) obj;
+
+		return this.getClient().equals(com.getClient()) 
+				&& this.getPlatCommander().equals(com.getPlatCommander()) 
+				&& this.getQteCommande() == com.getQteCommande();
+	}
 }

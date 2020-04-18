@@ -87,4 +87,19 @@ public class Plat {
 		
 		return index;		
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == this) {
+			return true;
+		}
+
+		if (!(obj instanceof Plat)) {
+			return false;
+		}
+
+		Plat plat = (Plat) obj;
+
+		return this.getNomPlat() == plat.getNomPlat() && this.getPrixPlat() == plat.getPrixPlat();
+	}
 }
