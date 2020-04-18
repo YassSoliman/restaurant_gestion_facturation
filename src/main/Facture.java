@@ -45,9 +45,9 @@ public class Facture {
 	public static String creerFacture() {
 		String message = "Bienvenue chez Barette!\n";
 		if (Commande.erreurs.length() > 67) {
-			message += Commande.erreurs;
+			message += Commande.erreurs + "\n";
 		}
-		message+="\n\nFactures:\n";
+		message+="\nFactures:\n";
 		for (Client cli : Client.getListeClients()) {
 			message += cli.getFacture();				
 		}
