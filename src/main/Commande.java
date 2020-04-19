@@ -9,7 +9,7 @@ public class Commande {
 								 + "# Message d'erreurs #\n"
 								 + "#####################\n";
 	
-	private Client client;
+	private Client unClient;
 	private Plat platCommander;
 	private int qteCommande;
 	
@@ -38,7 +38,7 @@ public class Commande {
 	}
 
 	public Commande(Client client, Plat platCommander, int qteCommande) {
-		this.client = client;
+		this.unClient = client;
 		this.platCommander = platCommander;
 		this.qteCommande = qteCommande;
 		Commande.getListeCommandes().add(this);
@@ -47,17 +47,17 @@ public class Commande {
 	}
 	
 	public Commande() {
-		this.client = new Client();
+		this.unClient = new Client();
 		this.platCommander = new Plat();
 		this.qteCommande = 0;
 	}
 
 	public Client getClient() {
-		return client;
+		return unClient;
 	}
 
 	public void setClient(Client client) {
-		this.client = client;
+		this.unClient = client;
 	}
 
 	public Plat getPlatCommander() {
@@ -78,7 +78,7 @@ public class Commande {
 
 	@Override
 	public String toString() {
-		return client + " " + platCommander.getNomPlat() + " " + qteCommande;
+		return unClient + " " + platCommander.getNomPlat() + " " + qteCommande;
 	}
 
 	public static void creerCommandes(String contenu) {

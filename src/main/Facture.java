@@ -8,38 +8,36 @@ import outilsjava.OutilsConstantes;
 
 public class Facture {
 	private static List<Facture> listeFactures = new ArrayList<Facture>();
-	private Client client;
-	private double prix;
+	private Client unClient;
+	private double prixFacture;
 	
 	public static List<Facture> getListeFactures() {
 		return listeFactures;
 	}
 	
 	public Client getClient() {
-		return this.client;
+		return this.unClient;
 	}
 	
 	public void setPrix(double prix) {
-		this.prix = prix;
+		this.prixFacture = prix;
 	}
 	
 	public double getPrix() {
-		return this.prix;
+		return this.prixFacture;
 	}
 	
 	public Facture(Client client) {
-		this.client = client;
+		this.unClient = client;
 		Facture.getListeFactures().add(this);
 	}
 
 	public void calculerFacture() {
 		double prixFacture = 0;
-		int tailleListeCommande = client.getListeCommande().size();
 		
-		for (int i = 0; i < tailleListeCommande; i++) {
-			prixFacture += client.getListeCommande().get(i).getPlatCommander().getPrixPlat() 
-						* client.getListeCommande().get(i).getQteCommande() 
-						* (OutilsConstantes.TPS + OutilsConstantes.TVQ);
+		for (Commande comm: unClient.getListeCommande()) {
+			prixFacture += comm.getPlatCommander().getPrixPlat() * 
+					comm.getQteCommande() * (OutilsConstantes.TPS + OutilsConstantes.TVQ);
 		}
 		
 		this.setPrix(prixFacture);
