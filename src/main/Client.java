@@ -51,12 +51,6 @@ public class Client {
 	public Facture getFacture() {
 		return this.facture;
 	}
-//TODO reunisage
-	public void afficherCommandes() {
-		for (Commande com : listeCommande) {
-			System.out.println(com);
-		}
-	}
 
 	@Override
 	public String toString() {
