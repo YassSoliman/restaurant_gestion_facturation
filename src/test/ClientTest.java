@@ -17,7 +17,7 @@ public class ClientTest {
 		
 		assertEquals(chaineValidation, Client.validerClient(client));
 	}
-	
+  
 	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	public void testEqualsClient() {

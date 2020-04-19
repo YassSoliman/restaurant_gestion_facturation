@@ -9,7 +9,7 @@ public class Commande {
 								 + "# Message d'erreurs #\n"
 								 + "#####################\n";
 	
-	private Client client;
+	private Client unClient;
 	private Plat platCommander;
 	private int qteCommande;
 	
@@ -18,14 +18,14 @@ public class Commande {
 	}
 	
 	public static String validerCommande(Commande commande) {
-		String messageErreurs = "\nCommande : " + commande.toString() + "\nDÈtails : \n";
+		String messageErreurs = "\nCommande : " + commande.toString() + "\nD√©tails : \n";
 		String messageErreursTrim = "";
 		String messageQuantite = validerQuantite(commande.getQteCommande());
 		String messageClient = Client.validerClient(commande.getClient());
 		String messagePlat = Plat.validerPlat(commande.getPlatCommander());
 				
 		messageErreurs += "\t" + (messageQuantite + "\n\t" + messageClient + "\n\t" + messagePlat).trim();
-		messageErreursTrim = ("Commande : " + commande.toString() + "\nDÈtails : \n").trim();
+		messageErreursTrim = ("Commande : " + commande.toString() + "\nD√©tails : \n").trim();
 		
 		if (messageErreurs.trim().equals(messageErreursTrim)) {
 			messageErreurs = "";
@@ -35,11 +35,11 @@ public class Commande {
 	}
 	
 	public static String validerQuantite(int qteCommande) {		
-		return qteCommande > 0 ? "" : "La quantitÈ de plat commandÈ est invalide.";
+		return qteCommande > 0 ? "" : "La quantit√© de plat command√© est invalide.";
 	}
 
 	public Commande(Client client, Plat platCommander, int qteCommande) {
-		this.client = client;
+		this.unClient = client;
 		this.platCommander = platCommander;
 		this.qteCommande = qteCommande;
 		Commande.getListeCommandes().add(this);
@@ -48,17 +48,17 @@ public class Commande {
 	}
 	
 	public Commande() {
-		this.client = new Client();
+		this.unClient = new Client();
 		this.platCommander = new Plat();
 		this.qteCommande = 0;
 	}
 
 	public Client getClient() {
-		return this.client;
+		return this.unClient;
 	}
 
 	public void setClient(Client client) {
-		this.client = client;
+		this.unClient = client;
 	}
 
 	public Plat getPlatCommander() {
@@ -79,7 +79,7 @@ public class Commande {
 
 	@Override
 	public String toString() {
-		return client + " " + this.platCommander.getNomPlat() + " " + this.qteCommande;
+		return unClient + " " + this.platCommander.getNomPlat() + " " + this.qteCommande;
 	}
 
 	public static void creerCommandes(String contenu) {

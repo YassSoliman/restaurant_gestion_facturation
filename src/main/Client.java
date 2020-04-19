@@ -8,14 +8,10 @@ public class Client {
 
 	private String nomClient;
 	private List<Commande> listeCommande;
-	private Facture facture;
+	private Facture uneFacture;
 
 	public static List<Client> getListeClients() {
 		return listeClients;
-	}
-//TODO reunisage
-	public static void setListeClients(List<Client> listeClients) {
-		Client.listeClients = listeClients;
 	}
 
 	public static String validerClient(Client client) {
@@ -25,14 +21,14 @@ public class Client {
 	public Client() {
 		this.setNomClient("");
 		this.listeCommande = new ArrayList<>();
-		this.facture = new Facture(this);
+		this.uneFacture = new Facture(this);
 	}
 
 	public Client(String nomClient) {
 		this.setNomClient(nomClient);
 		this.listeCommande = new ArrayList<>();
 		Client.getListeClients().add(this);
-		this.facture = new Facture(this);
+		this.uneFacture = new Facture(this);
 	}
 
 	public String getNomClient() {
@@ -53,13 +49,7 @@ public class Client {
 	}
 
 	public Facture getFacture() {
-		return this.facture;
-	}
-//TODO reunisage
-	public void afficherCommandes() {
-		for (Commande com : listeCommande) {
-			System.out.println(com);
-		}
+		return this.uneFacture;
 	}
 
 	@Override
