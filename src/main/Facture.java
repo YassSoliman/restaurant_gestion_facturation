@@ -34,9 +34,10 @@ public class Facture {
 
 	public void calculerFacture() {
 		double prixFacture = 0;
-		for (int i = 0; i < unClient.getListeCommande().size(); i++) {
-			prixFacture += unClient.getListeCommande().get(i).getPlatCommander().getPrixPlat() * 
-					unClient.getListeCommande().get(i).getQteCommande() * (OutilsConstantes.TPS + OutilsConstantes.TVQ);
+		
+		for (Commande comm: unClient.getListeCommande()) {
+			prixFacture += comm.getPlatCommander().getPrixPlat() * 
+					comm.getQteCommande() * (OutilsConstantes.TPS + OutilsConstantes.TVQ);
 		}
 		
 		setPrix(prixFacture);
