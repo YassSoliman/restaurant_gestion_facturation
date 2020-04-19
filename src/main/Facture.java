@@ -60,9 +60,9 @@ public class Facture {
 
 	@Override
 	public String toString() {
-		return client.getFacture().getPrix() != 0 
-				? (client.getNomClient() + " " 
-				   + OutilsAffichage.formaterMonetaire(client.getFacture().getPrix(), 2) + "\n") 
+		return unClient.getFacture().getPrix() != 0 
+				? (unClient.getNomClient() + " " 
+				   + OutilsAffichage.formaterMonetaire(unClient.getFacture().getPrix(), 2) + "\n") 
 				: "";
 	}
 }

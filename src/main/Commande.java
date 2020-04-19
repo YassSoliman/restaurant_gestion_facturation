@@ -18,14 +18,14 @@ public class Commande {
 	}
 	
 	public static String validerCommande(Commande commande) {
-		String messageErreurs = "\nCommande : " + commande.toString() + "\nDÃ©tails : \n";
+		String messageErreurs = "\nCommande : " + commande.toString() + "\nDétails : \n";
 		String messageErreursTrim = "";
 		String messageQuantite = validerQuantite(commande.getQteCommande());
 		String messageClient = Client.validerClient(commande.getClient());
 		String messagePlat = Plat.validerPlat(commande.getPlatCommander());
 				
 		messageErreurs += "\t" + (messageQuantite + "\n\t" + messageClient + "\n\t" + messagePlat).trim();
-		messageErreursTrim = ("Commande : " + commande.toString() + "\nDÃ©tails : \n").trim();
+		messageErreursTrim = ("Commande : " + commande.toString() + "\nDétails : \n").trim();
 		
 		if (messageErreurs.trim().equals(messageErreursTrim)) {
 			messageErreurs = "";
@@ -35,7 +35,7 @@ public class Commande {
 	}
 	
 	public static String validerQuantite(int qteCommande) {		
-		return qteCommande > 0 ? "" : "La quantitÃ© de plat commandÃ© est invalide.";
+		return qteCommande > 0 ? "" : "La quantité de plat commandé est invalide.";
 	}
 
 	public Commande(Client client, Plat platCommander, int qteCommande) {
