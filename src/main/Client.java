@@ -8,7 +8,7 @@ public class Client {
 
 	private String nomClient;
 	private List<Commande> listeCommande;
-	private Facture facture;
+	private Facture uneFacture;
 
 	public static List<Client> getListeClients() {
 		return listeClients;
@@ -21,14 +21,14 @@ public class Client {
 	public Client() {
 		this.setNomClient("");
 		this.listeCommande = new ArrayList<>();
-		this.facture = new Facture(this);
+		this.uneFacture = new Facture(this);
 	}
 
 	public Client(String nomClient) {
 		this.setNomClient(nomClient);
 		this.listeCommande = new ArrayList<>();
 		Client.getListeClients().add(this);
-		this.facture = new Facture(this);
+		this.uneFacture = new Facture(this);
 	}
 
 	public String getNomClient() {
@@ -49,7 +49,7 @@ public class Client {
 	}
 
 	public Facture getFacture() {
-		return this.facture;
+		return this.uneFacture;
 	}
 
 	@Override
