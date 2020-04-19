@@ -40,16 +40,16 @@ public class Facture {
 					comm.getQteCommande() * (OutilsConstantes.TPS + OutilsConstantes.TVQ);
 		}
 		
-		setPrix(prixFacture);
+		this.setPrix(prixFacture);
 	}
 	
 	public static String creerFacture() {
-		String message = "Bienvenue chez Barette!\n";
-		if (Commande.erreurs.length() > 67) {
-			message += Commande.erreurs + "\n";
-		}
-		message+="\nFactures:\n";
-		for (Client cli : Client.getListeClients()) {
+
+		String message = "Bienvenue chez Barette!\n" 
+						+ ((Commande.erreurs.length() > 67) ? (Commande.erreurs + "\n") : "")
+						+ "\nFactures:\n";
+		
+    for (Client cli : Client.getListeClients()) {
 			message += cli.getFacture();				
 		}
 		
@@ -60,12 +60,9 @@ public class Facture {
 
 	@Override
 	public String toString() {
-		String facture = "";
-		
-		if(unClient.getFacture().getPrix() != 0) {
-			facture += unClient.getNomClient() + " " + OutilsAffichage.formaterMonetaire(unClient.getFacture().getPrix(), 2) + "\n";
-		}
-		
-		return facture;
+		return client.getFacture().getPrix() != 0 
+				? (client.getNomClient() + " " 
+				   + OutilsAffichage.formaterMonetaire(client.getFacture().getPrix(), 2) + "\n") 
+				: "";
 	}
 }
