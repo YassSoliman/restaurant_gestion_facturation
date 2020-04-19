@@ -8,35 +8,35 @@ import outilsjava.OutilsConstantes;
 
 public class Facture {
 	private static List<Facture> listeFactures = new ArrayList<Facture>();
-	private Client client;
-	private double prix;
+	private Client unClient;
+	private double prixFacture;
 	
 	public static List<Facture> getListeFactures() {
 		return listeFactures;
 	}
 	
 	public Client getClient() {
-		return this.client;
+		return this.unClient;
 	}
 	
 	public void setPrix(double prix) {
-		this.prix = prix;
+		this.prixFacture = prix;
 	}
 	
 	public double getPrix() {
-		return this.prix;
+		return this.prixFacture;
 	}
 	
 	public Facture(Client client) {
-		this.client = client;
+		this.unClient = client;
 		Facture.getListeFactures().add(this);
 	}
 
 	public void calculerFacture() {
 		double prixFacture = 0;
-		for (int i = 0; i < client.getListeCommande().size(); i++) {
-			prixFacture += client.getListeCommande().get(i).getPlatCommander().getPrixPlat() * 
-					client.getListeCommande().get(i).getQteCommande() * (OutilsConstantes.TPS + OutilsConstantes.TVQ);
+		for (int i = 0; i < unClient.getListeCommande().size(); i++) {
+			prixFacture += unClient.getListeCommande().get(i).getPlatCommander().getPrixPlat() * 
+					unClient.getListeCommande().get(i).getQteCommande() * (OutilsConstantes.TPS + OutilsConstantes.TVQ);
 		}
 		
 		setPrix(prixFacture);
@@ -61,8 +61,8 @@ public class Facture {
 	public String toString() {
 		String facture = "";
 		
-		if(client.getFacture().getPrix() != 0) {
-			facture += client.getNomClient() + " " + OutilsAffichage.formaterMonetaire(client.getFacture().getPrix(), 2) + "\n";
+		if(unClient.getFacture().getPrix() != 0) {
+			facture += unClient.getNomClient() + " " + OutilsAffichage.formaterMonetaire(unClient.getFacture().getPrix(), 2) + "\n";
 		}
 		
 		return facture;
