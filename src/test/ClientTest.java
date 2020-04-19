@@ -22,24 +22,4 @@ public class ClientTest {
 		
 		assertEquals(chaineValidation, Client.validerClient(client));
 	}
-
-	@Test
-	public void testAfficherCommandes() {
-		
-
-		
-		
-		Client client = new Client();
-		client.setNomClient("Client");
-		Plat plat = new Plat();
-		plat.setNomPlat("Plat");
-		Commande commande = new Commande(client, plat, 0);
-		
-	//	String chaineValidation += client.afficherCommandes();
-		
-	//	assertTrue(client.afficherCommandes() == Commande.getListeCommandes());
-		
-	//	assertEquals(chaineValidation, client.afficherCommandes());
-	
-	}
 }
