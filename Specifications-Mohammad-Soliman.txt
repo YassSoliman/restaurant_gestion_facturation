@@ -1,5 +1,5 @@
 1 - Si un client a une facture de 0$, sa facture n’est pas affichée dans le fichier de sortie.
-	Implementer une verification de la valeur de la methode calculerFacture() de la classe Client à l'aide d'une condition if(cli.calculerFacture() > 0)
+	Implementer une verification de la valeur de la methode calculerFacture() de la classe Facture à l'aide d'une condition if(cli.calculerFacture() > 0)
 	dans la methode creerFacture(), avant d'écrire la commande dans le fichier de sortie. 
 	
 2 - Afficher les commandes incorrectes

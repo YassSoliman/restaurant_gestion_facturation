@@ -1,16 +1,11 @@
 package test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
 import main.Client;
-import main.Commande;
-import main.Facture;
-import main.Plat;
 
 public class ClientTest {
 
@@ -21,5 +16,13 @@ public class ClientTest {
 		String chaineValidation = "Le client " + client.getNomClient() + " n'existe pas.";
 		
 		assertEquals(chaineValidation, Client.validerClient(client));
+	}
+  
+	@SuppressWarnings("unlikely-arg-type")
+	@Test
+	public void testEqualsClient() {
+		Client client = new Client();
+		
+		assertFalse(client.equals(client.getFacture()));
 	}
 }

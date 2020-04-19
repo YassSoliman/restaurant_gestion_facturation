@@ -18,15 +18,16 @@ public class Commande {
 	}
 	
 	public static String validerCommande(Commande commande) {
-		String messageErreurs = "\nCommande : " + commande.toString() + "\nDÈtails : \n";
-		
+		String messageErreurs = "\nCommande : " + commande.toString() + "\nD√©tails : \n";
+		String messageErreursTrim = "";
 		String messageQuantite = validerQuantite(commande.getQteCommande());
 		String messageClient = Client.validerClient(commande.getClient());
 		String messagePlat = Plat.validerPlat(commande.getPlatCommander());
 				
 		messageErreurs += "\t" + (messageQuantite + "\n\t" + messageClient + "\n\t" + messagePlat).trim();
+		messageErreursTrim = ("Commande : " + commande.toString() + "\nD√©tails : \n").trim();
 		
-		if (messageErreurs.trim().equals(("Commande : " + commande.toString() + "\nDÈtails : \n").trim())) {
+		if (messageErreurs.trim().equals(messageErreursTrim)) {
 			messageErreurs = "";
 		}
 		
@@ -34,7 +35,7 @@ public class Commande {
 	}
 	
 	public static String validerQuantite(int qteCommande) {		
-		return qteCommande > 0 ? "" : "La quantitÈ de plat commandÈ est invalide.";
+		return qteCommande > 0 ? "" : "La quantit√© de plat command√© est invalide.";
 	}
 
 	public Commande(Client client, Plat platCommander, int qteCommande) {
@@ -53,7 +54,7 @@ public class Commande {
 	}
 
 	public Client getClient() {
-		return unClient;
+		return this.unClient;
 	}
 
 	public void setClient(Client client) {
@@ -69,7 +70,7 @@ public class Commande {
 	}
 
 	public int getQteCommande() {
-		return qteCommande;
+		return this.qteCommande;
 	}
 
 	public void setQteCommande(int qteCommande) {
@@ -78,7 +79,7 @@ public class Commande {
 
 	@Override
 	public String toString() {
-		return unClient + " " + platCommander.getNomPlat() + " " + qteCommande;
+		return unClient + " " + this.platCommander.getNomPlat() + " " + this.qteCommande;
 	}
 
 	public static void creerCommandes(String contenu) {
@@ -88,9 +89,11 @@ public class Commande {
 		
 		for(int i = tailleListeClients + tailleListePlats + 2; i < lignesContenu.length; i++) {
 			String ligne = lignesContenu[i];
-			if (ligne.trim().contentEquals("Fin"))
+			String ligneTrim = ligne.trim();
+			
+			if (ligneTrim.contentEquals("Fin"))
 				break;
-			if (!ligne.trim().contentEquals("Commandes :")) {
+			if (!ligneTrim.contentEquals("Commandes :")) {
 				String[] ligneCommande = ligne.split(" ");
 				
 				if(ligneCommande.length == 3) {					

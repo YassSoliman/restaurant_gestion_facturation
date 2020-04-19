@@ -17,9 +17,6 @@ public class PrincipaleTest {
 	
 	@Test
 	public void testLireClients() {
-		Client client = new Client();
-		Plat plat = new Plat();
-		Commande commande = new Commande();
 		String contenu = "Clients :\n" + 
 				"Roger\n" + 
 				"Céline\n" + 
